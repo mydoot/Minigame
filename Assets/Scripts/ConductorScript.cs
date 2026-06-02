@@ -1,4 +1,8 @@
 using UnityEngine;
+using System.Numerics;
+using Unity.VisualScripting;
+using UnityEngine.Events;
+using System.Collections;
 
 /* 
 FUTURE CHANGES
@@ -30,9 +34,12 @@ public class ConductorScript : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
 
+    public bool songHasStarted = false;
+
     void Start()
     {
-        
+        songHasStarted = false;
+
         //loading SongObject data
         musicSource.clip = Song.trackData;
         songBpm = Song.BPM;
@@ -40,20 +47,36 @@ public class ConductorScript : MonoBehaviour
         //Calculate the number of seconds in each beat
         secPerBeat = 60f / songBpm;
 
-        //Record the time when the music starts
-        dspSongTime = (float)AudioSettings.dspTime;
-
-        //Start the music
-        musicSource.Play();
+        waitForStart(0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //determine how many seconds since the song started
-    songPosition = (float)(AudioSettings.dspTime - dspSongTime);
+        if (songHasStarted)
+        {
+            //determine how many seconds since the song started
+            songPosition = (float)(AudioSettings.dspTime - dspSongTime);
 
-    //determine how many beats since the song started
-    songPositionInBeats = songPosition / secPerBeat;
+            //determine how many beats since the song started
+            songPositionInBeats = songPosition / secPerBeat;
+        }
+    }
+
+    IEnumerator waitForStart(float offset)
+    {
+        yield return new WaitForSeconds(2f + offset); //wait 1s + offset of the song before we actually begin
+        Debug.Log("songhasstarted");
+        songHasStarted = true;
+        beginSong();
+    }
+
+    void beginSong()
+    {
+        //Record the time when the music starts
+        dspSongTime = (float)AudioSettings.dspTime;
+
+        //Start the music
+        musicSource.Play();
     }
 }

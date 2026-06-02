@@ -1,16 +1,20 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 // Handles spawning in the notes and moving them betwen the spawn point and the hit point
 
 public class TrackHandler : MonoBehaviour
 {
 
-    [SerializeField] private GameObject note;
+    [SerializeField] private NoteScript note;
     [SerializeField] private Transform hitPoint;
     [SerializeField] private Transform spawnPoint;
 
     [SerializeField] private ConductorScript conductor;
+
+    [SerializeField] private TextMeshProUGUI debugText;
 
     // beat info
     private float spawnBeat;
@@ -18,11 +22,18 @@ public class TrackHandler : MonoBehaviour
     private float currentBeat;
     [SerializeField] private float shownBeats = 4f;
 
-    // might have to create a list/dictionary of note types in the future depending if we want to have multiple note types
+    public Queue<float> noteSpawns = new Queue<float>();
+
+    public List<NoteScript> Notes = new List<NoteScript>();
+
+    //public List
 
     void Start()
     {
-        spawnBeat = targetBeat - shownBeats;
+        noteSpawns.Enqueue(1f);
+        noteSpawns.Enqueue(2f);
+        noteSpawns.Enqueue(4f);
+
     }
 
     /* 
@@ -30,16 +41,52 @@ public class TrackHandler : MonoBehaviour
         - Create a list/other method to contain the "chart" of the track
         - create a function that recalculates the target beat
         - solidify designs
-    
+
     */
     void Update()
     {
-        currentBeat = conductor.songPositionInBeats;
-        
-        transform.position = Vector2.Lerp(
-        spawnPoint.position,
-        hitPoint.position,
-        (currentBeat - spawnBeat) / (targetBeat - spawnBeat)
-    );
+        debugText.text = $"Current Beat: {currentBeat} | songHasStarted:{conductor.songHasStarted}";
+
+        if (conductor.songHasStarted)
+        {
+            currentBeat = conductor.songPositionInBeats;
+
+            foreach (NoteScript NOTE in Notes)
+            {
+                NOTE.transform.position = Vector2.Lerp(
+                spawnPoint.position,
+                hitPoint.position,
+                (shownBeats - (NOTE.targetBeat - currentBeat)) / shownBeats
+            );
+            }
+
+
+            spawnNotes();
+        }
+
+
+
+    }
+
+    void spawnNotes()
+    {
+        if (noteSpawns.Count > 0)
+        {
+            Debug.Log(noteSpawns.Count);
+            float nextTargetBeat = noteSpawns.Peek();
+
+            if ((currentBeat + shownBeats) >= nextTargetBeat)
+            {
+                NoteScript Note = Instantiate(note, spawnPoint.position, Quaternion.identity);
+                Note.targetBeat = nextTargetBeat;
+                Notes.Add(Note);
+
+                noteSpawns.Dequeue();
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No more notes to spawn!");
+        }
     }
 }
