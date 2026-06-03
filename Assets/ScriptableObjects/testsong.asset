@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c219a0c229bbab24f9a1fdf25bd9b145, type: 3}
   m_Name: testsong
   m_EditorClassIdentifier: Assembly-CSharp::SongObject
-  song: {fileID: 0}
-  BPM: 0
+  trackData: {fileID: 8300000, guid: 679641740dce4e342bbf5d51e411b219, type: 3}
+  trackName: Jumper (from GD)
+  BPM: 175

@@ -7,5 +7,6 @@ public class SongObject : ScriptableObject
     public AudioClip trackData;
 
     [Header("Metadata")]
+    public string trackName;
     public float BPM;
 }
