@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c219a0c229bbab24f9a1fdf25bd9b145, type: 3}
+  m_Name: endlesscarnival
+  m_EditorClassIdentifier: Assembly-CSharp::SongObject
+  trackData: {fileID: 8300000, guid: 6578dee90e79a0f448a7b064c1b718f4, type: 3}
+  trackName: Endless Carnival
+  BPM: 162
+  chart:
+  - targetBeat: 1
+    type: 0
+  - targetBeat: 4
+    type: 1
+  - targetBeat: 8
+    type: 1
+  - targetBeat: 12
+    type: 1
+  - targetBeat: 16
+    type: 1
+  - targetBeat: 20
+    type: 1
+  - targetBeat: 24
+    type: 1
+  - targetBeat: 28
+    type: 1
+  - targetBeat: 30
+    type: 0
+  - targetBeat: 32
+    type: 0
+  - targetBeat: 34
+    type: 0
+  - targetBeat: 36
+    type: 0

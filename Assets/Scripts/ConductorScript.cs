@@ -39,7 +39,7 @@ public class ConductorScript : MonoBehaviour
     [Tooltip("The amount of delay before the song actually starts. The minimum should be 2s.")]
     [SerializeField] private float delay = 2f;
 
-    [Tooltip("Offset value, used when the song does not begin immediately when the track assets itself begins")]
+    [Tooltip("Global offset in milliseconds. Used for better game feel")]
     public float songOffset;
 
     //an AudioSource attached to this GameObject that will play the music.

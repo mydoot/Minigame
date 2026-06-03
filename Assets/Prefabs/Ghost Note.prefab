@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.538262, y: 2.1103458, z: 0}
-  m_LocalScale: {x: 1.375, y: 1.375, z: 1.375}
+  m_LocalScale: {x: 0.813725, y: 0.813725, z: 0.813725}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -106,5 +106,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostNoteScript
   targetBeat: 0
   pointValue: 2
-  removeThreshold: 1.1
-  transparencySpeed: 1.33
+  removeThreshold: 1.05
+  transparencySpeed: 1.2

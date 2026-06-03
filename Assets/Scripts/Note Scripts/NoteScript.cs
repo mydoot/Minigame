@@ -16,6 +16,7 @@ public class NoteScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -26,7 +27,11 @@ public class NoteScript : MonoBehaviour
 
     protected virtual void moveNote()
     {
-        threshold = (TrackHandler.shownBeats - (targetBeat - TrackHandler.currentBeat)) / TrackHandler.shownBeats; //used for interpolation
+        float secOffset = ConductorScript.Instance.songOffset / 1000f;
+        float beatOffset = secOffset / ConductorScript.Instance.secPerBeat;
+        float fakeCurrentBeat = TrackHandler.currentBeat + beatOffset;
+        
+        threshold = (TrackHandler.shownBeats - (targetBeat - fakeCurrentBeat)) / TrackHandler.shownBeats; //used for interpolation
 
         transform.position = Vector2.LerpUnclamped(
         TrackHandler.Instance.spawnPoint.position,
@@ -36,13 +41,13 @@ public class NoteScript : MonoBehaviour
 
         // if the note moves past the hit point by the remove threshold, remove it and invoke all functions subscribes to onNoteMissed
         if (threshold > removeThreshold)
-        {
-            TrackHandler.onNoteMissed?.Invoke();
-            Debug.Log("miss!");
-            Destroy(gameObject);
+        {   
+            TrackHandler.Instance.handleNoteMissed(this);     
+            destroyThisNote();
         }
     }
-
+    
+    
     public void destroyThisNote()
     {
         Destroy(gameObject);

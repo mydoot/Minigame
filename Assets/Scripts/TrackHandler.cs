@@ -24,6 +24,8 @@ public class TrackHandler : MonoBehaviour
 
     // PUBLIC STATIC VARIABLES
     public static float currentBeat;
+
+    public float currentSongPosition;
     public static float shownBeats = 4f;
 
     public Queue<Chart> noteSpawns;
@@ -50,13 +52,15 @@ public class TrackHandler : MonoBehaviour
 
     void Start()
     {
-        onNoteMissed += handleNoteMissed; //subscribes this function to the onNoteMissed event
+        //onNoteMissed/subscribes this function to the onNoteMissed event
 
         //temp charting
         noteSpawns = new Queue<Chart>(ConductorScript.Instance.Song.chart);
 
         noteDictionary.Add(noteType.Note, note);
         noteDictionary.Add(noteType.GhostNote, ghostNote);
+
+
     }
 
     /* 
@@ -70,6 +74,7 @@ public class TrackHandler : MonoBehaviour
     {
         debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats} | Song Duration Elapsed: {ConductorScript.Instance.songPosition} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
 
+        currentSongPosition = ConductorScript.Instance.songPosition;
         currentBeat = ConductorScript.Instance.songPositionInBeats;
 
         if (ConductorScript.Instance.songHasStarted)
@@ -78,37 +83,74 @@ public class TrackHandler : MonoBehaviour
         }
 
         // handle inputs
-        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) //change this later
+        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) //change this later
         {
             hitNote();
         }
 
-
+        removeOldNotes();
 
     }
 
     void hitNote()
     {
-        if (noteSpawns.Count > 0)
+        Debug.Log("press");
+        if (Notes.Count > 0)
         {
             NoteScript upcomingNote = Notes[0];
 
-            float diff = Mathf.Abs(upcomingNote.targetBeat - currentBeat);
+            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.songOffset / 1000f);
 
-            if (diff <= 0.15f)
+            float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
+
+            float diff = Mathf.Abs(targetTime - adjSongPosition);
+
+            float msDiff = diff * 1000f;
+
+            UIScript.diffDebug?.Invoke(msDiff);
+
+            if (msDiff <= 70f)
             {
                 Debug.Log("hit!");
+
+
                 onNoteHit?.Invoke();
+
                 Notes.Remove(upcomingNote);
                 upcomingNote.destroyThisNote();
             }
+
         }
     }
 
-    void handleNoteMissed()
+    public void handleNoteMissed(NoteScript note)
     {
-        //Debug.Log("rip")
+        if (Notes.Contains(note))
+        {
+            Debug.Log("miss!");
+            Notes.Remove(note);
+            onNoteMissed?.Invoke();
+        }
+    }
 
+    void removeOldNotes()
+    {
+        while (Notes.Count > 0)
+        {
+            NoteScript upcomingNote = Notes[0];
+
+            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.songOffset / 1000f);
+
+            float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
+
+            float purgeTime = targetTime + (125f / 1000f);
+
+            if (adjSongPosition > purgeTime)
+            {
+                handleNoteMissed(upcomingNote);
+            }
+
+        }
     }
 
     void spawnNotes()
@@ -135,10 +177,6 @@ public class TrackHandler : MonoBehaviour
                     Debug.LogError("That note doesn't exist");
                 }
             }
-        }
-        else
-        {
-            Debug.LogWarning("No more notes to spawn!");
         }
     }
 }
