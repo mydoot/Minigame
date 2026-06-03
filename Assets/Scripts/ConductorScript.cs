@@ -14,7 +14,7 @@ public class ConductorScript : MonoBehaviour
 {
     public static ConductorScript Instance { get; private set; } 
 
-    [SerializeField] private SongObject Song;
+    [SerializeField] public SongObject Song;
 
     //Song beats per minute
     //This is determined by the song you're trying to sync up to

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using Unity.VisualScripting;
 
 // Handles spawning in the notes and moving them betwen the spawn point and the hit point, a "2nd game manager"
 
@@ -9,9 +10,12 @@ public class TrackHandler : MonoBehaviour
 {
     public static TrackHandler Instance { get; private set; } 
 
+    private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
+
     // PRIVATE VARIABLES
     [Tooltip("Note prefab")]
     [SerializeField] private NoteScript note;
+    [SerializeField] private GhostNoteScript ghostNote;
 
     [SerializeField] private TextMeshProUGUI debugText;
 
@@ -22,7 +26,7 @@ public class TrackHandler : MonoBehaviour
     public static float currentBeat;
     public static float shownBeats = 4f;
 
-    public Queue<float> noteSpawns = new Queue<float>();
+    public Queue<Chart> noteSpawns;
 
     public List<NoteScript> Notes = new List<NoteScript>();
 
@@ -46,14 +50,10 @@ public class TrackHandler : MonoBehaviour
         onNoteMissed += handleNoteMissed; //subscribes this function to the onNoteMissed event
 
         //temp charting
-        noteSpawns.Enqueue(1f);
-        noteSpawns.Enqueue(2f);
-        noteSpawns.Enqueue(4f);
-        noteSpawns.Enqueue(5f);
-        noteSpawns.Enqueue(6f);
-        noteSpawns.Enqueue(7f);
-        noteSpawns.Enqueue(8f);
+        noteSpawns = new Queue<Chart>(ConductorScript.Instance.Song.chart);
 
+        noteDictionary.Add(noteType.Note, note);
+        noteDictionary.Add(noteType.GhostNote, ghostNote);
     }
 
     /* 
@@ -86,16 +86,23 @@ public class TrackHandler : MonoBehaviour
         if (noteSpawns.Count > 0)
         {
             // looks at the next target beat in the noteSpawns list
-            float nextTargetBeat = noteSpawns.Peek();
+            float nextTargetBeat = noteSpawns.Peek().targetBeat;
+            noteType chosenNote = noteSpawns.Peek().type;
 
             // if the note can be spawned from the current beat and also within the next 4, spawn the note
             if ((currentBeat + shownBeats) >= nextTargetBeat)
             {
-                NoteScript Note = Instantiate(note, spawnPoint.position, Quaternion.identity);
+                if (noteDictionary.TryGetValue(chosenNote, out NoteScript obj))
+                {
+                NoteScript Note = Instantiate(obj, spawnPoint.position, Quaternion.identity);
                 Note.targetBeat = nextTargetBeat;
                 Notes.Add(Note);
 
-                noteSpawns.Dequeue();
+                noteSpawns.Dequeue();   
+                } else
+                {
+                    Debug.LogError("That note doesn't exist");
+                }
             }
         }
         else

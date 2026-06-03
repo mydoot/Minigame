@@ -9,12 +9,14 @@ public class NoteScript : MonoBehaviour
     public float pointValue;
 
     [Tooltip("The % threshold for when the note is removed after passing the hitpoint. Base value is 1.2 (20% past the hit point the note is removed)")]
-    [SerializeField] private float removeThreshold = 1.2f;
+    [SerializeField] protected float removeThreshold = 1.2f;
+
+    protected float threshold;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        threshold = (TrackHandler.shownBeats - (targetBeat - TrackHandler.currentBeat)) / TrackHandler.shownBeats; //used for interpolation
     }
 
     // Update is called once per frame
@@ -23,9 +25,8 @@ public class NoteScript : MonoBehaviour
         moveNote();
     }
 
-    void moveNote()
+    protected virtual void moveNote()
     {
-        float threshold = (TrackHandler.shownBeats - (targetBeat - TrackHandler.currentBeat)) / TrackHandler.shownBeats; //used for interpolation
 
         transform.position = Vector2.LerpUnclamped(
         TrackHandler.Instance.spawnPoint.position,

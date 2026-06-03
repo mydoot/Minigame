@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 38606830131009433}
   - component: {fileID: 4086033813660952357}
-  - component: {fileID: 3070916930067278322}
+  - component: {fileID: 2068881631369065918}
   m_Layer: 0
-  m_Name: Note
+  m_Name: Ghost Note
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,10 +80,10 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0, g: 0.76078105, b: 0.87169814, a: 1}
+  m_Color: {r: 0.8490566, g: 0.44731376, b: 0.08810955, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -92,7 +92,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &3070916930067278322
+--- !u!114 &2068881631369065918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -101,9 +101,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2765409619214730234}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a9ccc4e3e1f01249af918993682df00, type: 3}
+  m_Script: {fileID: 11500000, guid: 6245ac2ebec7c1d4da685fbd00acb9c8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NoteScript
+  m_EditorClassIdentifier: Assembly-CSharp::GhostNoteScript
   targetBeat: 0
-  pointValue: 1
+  pointValue: 2
   removeThreshold: 1.055
+  transparencySpeed: 1
