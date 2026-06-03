@@ -81,7 +81,7 @@ public class SongObject : ScriptableObject
             }
         }
 
-        Debug.Log($"Loaded chart data from {txtChartData.name}.txt, populating {chart.Count} elements from {oldChartCount}");
+        Debug.Log($"Loaded chart data from {txtChartData.name}.txt, populating {chart.Count} elements from {oldChartCount} ({(oldChartCount < chart.Count ? "+" : "")}{chart.Count-oldChartCount} difference)");
     }
 
     void OnValidate()
