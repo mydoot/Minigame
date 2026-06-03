@@ -3,18 +3,14 @@ using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine.Events;
 using System.Collections;
-
-/* 
-FUTURE CHANGES
- - Change loading the audio to use a scriptable object to easily load both the music and it's BPM (+ other things like song name and jacket art, etc)
-
-*/
+using System.IO;
+using System.Collections.Generic;
 
 public class ConductorScript : MonoBehaviour
 {
     public static ConductorScript Instance { get; private set; } 
 
-    [SerializeField] private SongObject Song;
+    [SerializeField] public SongObject Song;
 
     //Song beats per minute
     //This is determined by the song you're trying to sync up to
@@ -39,7 +35,7 @@ public class ConductorScript : MonoBehaviour
     [Tooltip("The amount of delay before the song actually starts. The minimum should be 2s.")]
     [SerializeField] private float delay = 2f;
 
-    [Tooltip("Offset value, used when the song does not begin immediately when the track assets itself begins")]
+    [Tooltip("Global offset in milliseconds. Used for better game feel")]
     public float songOffset;
 
     //an AudioSource attached to this GameObject that will play the music.
@@ -66,6 +62,7 @@ public class ConductorScript : MonoBehaviour
         songBpm = Song.BPM;
 
         //Calculate the number of seconds in each beat
+        // duration of a quarter note
         secPerBeat = 60f / songBpm;
 
         //StartCoroutine(waitForStart(0));
@@ -86,14 +83,6 @@ public class ConductorScript : MonoBehaviour
         }
     }
 
-    /* IEnumerator waitForStart(float offset)
-    {
-        yield return new WaitForSeconds(2f + offset); //wait 1s + offset of the song before we actually begin
-        Debug.Log("songhasstarted");
-        songHasStarted = true;
-        beginSong();
-    } */
-
     void beginSong()
     {
         //Record the time when the music starts
@@ -106,4 +95,8 @@ public class ConductorScript : MonoBehaviour
         
         songHasStarted = true;
     }
+
+   
+
+    
 }
