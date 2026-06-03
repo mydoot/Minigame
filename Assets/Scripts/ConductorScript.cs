@@ -10,7 +10,8 @@ public enum noteType
 {
     Note,
     GhostNote,
-    CapsuleNote
+    CapsuleNote, 
+    TriangleNote
 }
 
 public class ConductorScript : MonoBehaviour
