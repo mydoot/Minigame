@@ -107,4 +107,4 @@ MonoBehaviour:
   targetBeat: 0
   pointValue: 2
   removeThreshold: 1.05
-  transparencySpeed: 1.2
+  transparencySpeed: 1.4

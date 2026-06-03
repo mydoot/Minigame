@@ -16,27 +16,55 @@ MonoBehaviour:
   trackName: Endless Carnival
   BPM: 162
   chart:
-  - targetBeat: 1
-    type: 0
   - targetBeat: 4
+    type: 0
+  - targetBeat: 6
     type: 1
   - targetBeat: 8
     type: 1
+  - targetBeat: 10
+    type: 1
   - targetBeat: 12
+    type: 1
+  - targetBeat: 14
     type: 1
   - targetBeat: 16
     type: 1
+  - targetBeat: 18
+    type: 1
   - targetBeat: 20
     type: 1
+  - targetBeat: 22
+    type: 1
   - targetBeat: 24
+    type: 1
+  - targetBeat: 26
     type: 1
   - targetBeat: 28
     type: 1
   - targetBeat: 30
-    type: 0
+    type: 1
   - targetBeat: 32
     type: 0
-  - targetBeat: 34
+  - targetBeat: 32.75
+    type: 1
+  - targetBeat: 34.5
     type: 0
+  - targetBeat: 35
+    type: 1
   - targetBeat: 36
     type: 0
+  - targetBeat: 36.75
+    type: 1
+  - targetBeat: 38.5
+    type: 0
+  - targetBeat: 39
+    type: 1
+  - targetBeat: 40
+    type: 1
+  - targetBeat: 40.75
+    type: 1
+  - targetBeat: 42.5
+    type: 1
+  - targetBeat: 43
+    type: 1

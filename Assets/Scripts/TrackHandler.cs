@@ -94,7 +94,7 @@ public class TrackHandler : MonoBehaviour
 
     void hitNote()
     {
-        Debug.Log("press");
+        Debug.Log($"clicked on beat {ConductorScript.Instance.songPositionInBeats}");
         if (Notes.Count > 0)
         {
             NoteScript upcomingNote = Notes[0];
@@ -135,7 +135,9 @@ public class TrackHandler : MonoBehaviour
 
     void removeOldNotes()
     {
-        while (Notes.Count > 0)
+        int failure = 0;
+
+        while (Notes.Count > 0 && failure >= 10)
         {
             NoteScript upcomingNote = Notes[0];
 
@@ -148,8 +150,16 @@ public class TrackHandler : MonoBehaviour
             if (adjSongPosition > purgeTime)
             {
                 handleNoteMissed(upcomingNote);
+            } else
+            {
+                break;
             }
 
+        } 
+       
+        if (failure >= 10)
+        {
+            Debug.LogError("Catastrophic failure in removeOldNotes(): The counter reached it's target value and the function has been stopped");
         }
     }
 
