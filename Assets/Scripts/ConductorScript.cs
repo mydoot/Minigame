@@ -17,8 +17,10 @@ public class ConductorScript : MonoBehaviour
 {
     public static ConductorScript Instance { get; private set; } 
 
+    [Header("Song ScriptableObject")]
     [SerializeField] public SongObject Song;
 
+    [Header("Song Data")]
     //Song beats per minute
     //This is determined by the song you're trying to sync up to
     public float songBpm;
@@ -32,7 +34,7 @@ public class ConductorScript : MonoBehaviour
     public float songPosition;
 
      [Tooltip("current song positio in seconds ignoring possible song offsets")]
-    public float absoluteSongPosition;
+    public double absoluteSongPosition;
 
     //Current song position, in beats
     [Tooltip("current song position in beats")]
@@ -40,19 +42,19 @@ public class ConductorScript : MonoBehaviour
 
     //How many seconds have passed since the song started
     [Tooltip("The amount of seconds that have passed since song started (universal); Rely on songPosition and songPositionInBeats for specific song elapsed time")]
-    public float dspSongTime;
+    public double dspSongTime;
 
+    [Header("Misc Song Data")]
     [Tooltip("The amount of delay before the song actually starts. The minimum should be 2s.")]
     [SerializeField] private float delay = 2f;
 
     [Tooltip("Global offset in milliseconds. Used for better game feel")]
     public float globalOffset;
     
-    //an AudioSource attached to this GameObject that will play the music.
-    public AudioSource musicSource;
-
     public bool songHasStarted = false;
 
+    //an AudioSource attached to this GameObject that will play the music.
+    public AudioSource musicSource;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -85,10 +87,10 @@ public class ConductorScript : MonoBehaviour
     {
         if (songHasStarted)
         {
-            absoluteSongPosition = (float)(AudioSettings.dspTime - dspSongTime);
-            
+            absoluteSongPosition = AudioSettings.dspTime - dspSongTime;
+
             //determine how many seconds since the song started
-            songPosition = absoluteSongPosition - Song.songOffset;
+            songPosition = (float)(absoluteSongPosition - Song.songOffset);
 
             //determine how many beats since the song started
             songPositionInBeats = songPosition / secPerBeat;
@@ -103,7 +105,7 @@ public class ConductorScript : MonoBehaviour
         }
 
         //Record the time when the music starts
-        dspSongTime = (float)AudioSettings.dspTime + delay;
+        dspSongTime = AudioSettings.dspTime + (double)delay;
 
         Debug.Log($"song starts in {delay}");
 

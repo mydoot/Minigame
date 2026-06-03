@@ -11,21 +11,19 @@ public class TrackHandler : MonoBehaviour
 {
     public static TrackHandler Instance { get; private set; }
 
-
+    [Header("Note Types")]
     // PRIVATE VARIABLES
-    [Tooltip("Note prefab")]
     [SerializeField] private NoteScript note;
     [SerializeField] private GhostNoteScript ghostNote;
     [SerializeField] private CapsuleNoteScript capsuleNote;
 
-    [SerializeField] private TextMeshProUGUI debugText;
-
+    [Header("Hit Point and Spawn Point Objects")]
     [SerializeField] public Transform hitPoint;
     [SerializeField] public Transform spawnPoint;
 
     // PRIVATE DATA TYPES
     private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
-
+    
     // PUBLIC STATIC VARIABLES
     public static float currentBeat;
 
@@ -33,6 +31,7 @@ public class TrackHandler : MonoBehaviour
     public static float shownBeats = 4f;
 
     // PUBLIC DATA TYPES
+    [Header("Public Data Types")]
     public Queue<Chart> noteSpawns;
 
     public List<NoteScript> Notes = new List<NoteScript>();
@@ -44,6 +43,10 @@ public class TrackHandler : MonoBehaviour
     public static OnNoteMissed onNoteMissed;
 
     public static OnNoteHit onNoteHit;
+
+    [Header("Debug")]
+    [SerializeField] private TextMeshProUGUI debugText;
+
 
 
 
@@ -72,7 +75,7 @@ public class TrackHandler : MonoBehaviour
 
     void Update()
     {
-        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
+        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | ms per beat {ConductorScript.Instance.secPerBeat * 1000f:F2} | Notes to spawn: {noteSpawns.Count}";
 
         currentSongPosition = ConductorScript.Instance.songPosition;
         currentBeat = ConductorScript.Instance.songPositionInBeats;
@@ -114,7 +117,7 @@ public class TrackHandler : MonoBehaviour
             if (upcomingNote.returnCurrentHealth() > 1)
             {
                 float largeTargetWindow = ConductorScript.Instance.secPerBeat * 1000f;
-                if (msDiff <= largeTargetWindow)
+                if (msDiff <= largeTargetWindow + 150f) //adding in a temporary 150ms of extra padding for health notes
                 {
                     Debug.Log("hit!");
                     onNoteHit?.Invoke();

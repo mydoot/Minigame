@@ -47,6 +47,7 @@ public class SongObject : ScriptableObject
     //AI assistance used for the below
     void LoadChartFromText()
     {
+        float oldChartCount = chart.Count;
         if (chart.Count >= 1)
         {
             chart.Clear();
@@ -80,7 +81,7 @@ public class SongObject : ScriptableObject
             }
         }
 
-        Debug.Log($"Loaded chart data from {txtChartData.name}.txt");
+        Debug.Log($"Loaded chart data from {txtChartData.name}.txt, populating {chart.Count} elements from {oldChartCount}");
     }
 
     void OnValidate()

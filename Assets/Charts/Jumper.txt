@@ -10,8 +10,89 @@
 24, Note
 28, Note
 32, Note
+33, CapsuleNote
 34, CapsuleNote
 35, CapsuleNote
 36, CapsuleNote
 37, CapsuleNote
 38, CapsuleNote
+39, CapsuleNote
+40, CapsuleNote
+41, CapsuleNote
+42, CapsuleNote
+43, CapsuleNote
+44, CapsuleNote
+45, CapsuleNote
+46, CapsuleNote
+47, CapsuleNote
+48, CapsuleNote
+49, CapsuleNote
+50, CapsuleNote
+51, CapsuleNote
+52, CapsuleNote
+53, CapsuleNote
+54, CapsuleNote
+55, CapsuleNote
+56, CapsuleNote
+57, CapsuleNote
+58, CapsuleNote
+59, CapsuleNote
+60, CapsuleNote
+61, CapsuleNote
+62, CapsuleNote
+63, CapsuleNote
+
+64, Note
+65, Note
+66, Note
+67, CapsuleNote
+
+68, Note
+69, Note
+70, Note
+71, CapsuleNote
+
+72, Note
+73, Note
+74, Note
+75, CapsuleNote
+
+76, Note
+77, Note
+78, Note
+79, CapsuleNote
+
+80, Note
+81, Note
+82, Note
+83, CapsuleNote
+
+84, Note
+85, Note
+86, Note
+87, CapsuleNote
+
+88, Note
+89, Note
+90, Note
+91, CapsuleNote
+
+92, Note
+93, Note
+94, Note
+95, CapsuleNote
+
+96, Note
+97, Note
+98, Note
+99, CapsuleNote
+
+100, Note
+101, Note
+102, Note
+103, CapsuleNote
+
+104, Note
+105, Note
+106, Note
+107, CapsuleNote
