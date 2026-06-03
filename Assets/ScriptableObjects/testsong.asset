@@ -13,64 +13,34 @@ MonoBehaviour:
   m_Name: testsong
   m_EditorClassIdentifier: Assembly-CSharp::SongObject
   trackData: {fileID: 8300000, guid: 3101c38dc4fc53c40997261b2a137657, type: 3}
+  txtChartData: {fileID: 4900000, guid: 4aa3ab66b8b091748bb72f9e4dc63efb, type: 3}
   trackName: Jumper (from GD)
-  BPM: 175
+  BPM: 178
+  songOffset: 0.703
   chart:
-  - targetBeat: 1
-    type: 0
   - targetBeat: 4
     type: 0
   - targetBeat: 8
     type: 0
+  - targetBeat: 12
+    type: 0
   - targetBeat: 16
     type: 0
-  - targetBeat: 17
-    type: 1
-  - targetBeat: 18
-    type: 0
-  - targetBeat: 19
-    type: 1
   - targetBeat: 20
-    type: 0
-  - targetBeat: 21
-    type: 0
-  - targetBeat: 22
-    type: 0
-  - targetBeat: 23
     type: 0
   - targetBeat: 24
     type: 0
-  - targetBeat: 25
-    type: 0
-  - targetBeat: 26
-    type: 0
-  - targetBeat: 27
-    type: 0
   - targetBeat: 28
     type: 0
-  - targetBeat: 29
-    type: 0
-  - targetBeat: 30
+  - targetBeat: 32
     type: 0
   - targetBeat: 34
-    type: 0
+    type: 2
+  - targetBeat: 36
+    type: 2
   - targetBeat: 38
-    type: 0
+    type: 2
+  - targetBeat: 40
+    type: 2
   - targetBeat: 42
-    type: 0
-  - targetBeat: 46
-    type: 0
-  - targetBeat: 50
-    type: 0
-  - targetBeat: 51
-    type: 0
-  - targetBeat: 51.5
-    type: 0
-  - targetBeat: 53
-    type: 0
-  - targetBeat: 53.5
-    type: 0
-  - targetBeat: 55
-    type: 0
-  - targetBeat: 55.5
-    type: 0
+    type: 2

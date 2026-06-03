@@ -28,7 +28,7 @@ public class UIScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        comboUI.text = $"Combo: {combo} | Note Diff (in ms): {diff}";
+        comboUI.text = $"Combo: {combo} | Note Diff (in ms): {diff:F2}";
     }
 
     void increaseCombo()

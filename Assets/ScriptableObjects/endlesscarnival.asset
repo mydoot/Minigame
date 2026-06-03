@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: endlesscarnival
   m_EditorClassIdentifier: Assembly-CSharp::SongObject
   trackData: {fileID: 8300000, guid: 6578dee90e79a0f448a7b064c1b718f4, type: 3}
+  txtChartData: {fileID: 4900000, guid: 989abd8d338011b4a8e44238db2fee9a, type: 3}
   trackName: Endless Carnival
   BPM: 162
   chart:
@@ -209,4 +210,44 @@ MonoBehaviour:
   - targetBeat: 93
     type: 0
   - targetBeat: 94
+    type: 0
+  - targetBeat: 96
+    type: 0
+  - targetBeat: 96.5
+    type: 0
+  - targetBeat: 97
+    type: 0
+  - targetBeat: 97.5
+    type: 1
+  - targetBeat: 98
+    type: 0
+  - targetBeat: 99
+    type: 0
+  - targetBeat: 99.5
+    type: 0
+  - targetBeat: 100
+    type: 0
+  - targetBeat: 100.5
+    type: 1
+  - targetBeat: 101
+    type: 0
+  - targetBeat: 102
+    type: 0
+  - targetBeat: 102.5
+    type: 0
+  - targetBeat: 103
+    type: 0
+  - targetBeat: 103.5
+    type: 1
+  - targetBeat: 104
+    type: 0
+  - targetBeat: 105
+    type: 0
+  - targetBeat: 105.5
+    type: 0
+  - targetBeat: 106
+    type: 0
+  - targetBeat: 106.5
+    type: 1
+  - targetBeat: 107
     type: 0

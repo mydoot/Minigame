@@ -2,25 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-
-public enum noteType
-{
-    Note,
-    GhostNote
-}
+using System.Globalization;
 
 [CreateAssetMenu(fileName = "SongObject", menuName = "Scriptable Objects/SongObject")]
 public class SongObject : ScriptableObject
 {
     [Header("Assets")]
     public AudioClip trackData;
+    public TextAsset txtChartData;
 
     [Header("Metadata")]
     public string trackName;
     public float BPM;
+    [Tooltip("Song offset. Adjust according to when the music actually begins playing in a file.")]
+    public float songOffset = 0;
+
+    [Header("Chart data as a List object")]
     public List<Chart> chart = new List<Chart>();
 
-    
+
     /* [ContextMenu("Export Chart to TXT")]
     public void ExportExistingChart()
     {
@@ -43,6 +43,54 @@ public class SongObject : ScriptableObject
 
         Debug.Log($"<color=green>SUCCESS:</color> Chart exported to {filePath}");
     } */
+
+    //AI assistance used for the below
+    void LoadChartFromText()
+    {
+        float oldChartCount = chart.Count;
+        if (chart.Count >= 1)
+        {
+            chart.Clear();
+        }
+
+        string[] lines = txtChartData.text.Split('\n');
+
+        foreach (string line in lines)
+        {
+            string cleanLine = line.Trim();
+
+            if (string.IsNullOrWhiteSpace(cleanLine) || cleanLine.StartsWith("|")) continue;
+
+            string[] data = cleanLine.Split(',');
+
+            if (data.Length < 2) continue;
+
+            string beatString = data[0].Trim();
+            string typeString = data[1].Trim();
+
+            // (InvariantCulture ensures decimals work correctly in all countries)
+            float parsedBeat = float.Parse(beatString, NumberStyles.Float, CultureInfo.InvariantCulture);
+
+            if (Enum.TryParse(typeString, out noteType parsedType))
+            {
+                chart.Add(new Chart { targetBeat = parsedBeat, type = parsedType });
+            }
+            else
+            {
+                Debug.LogWarning($"Invalid note type used in chart data '{typeString}'");
+            }
+        }
+
+        Debug.Log($"Loaded chart data from {txtChartData.name}.txt, populating {chart.Count} elements from {oldChartCount}");
+    }
+
+    void OnValidate()
+    {
+        if (txtChartData)
+        {
+            LoadChartFromText();
+        }
+    }
 }
 
 [Serializable]

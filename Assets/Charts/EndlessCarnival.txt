@@ -1,3 +1,7 @@
+| Song: Endless Carnival - Mitsukiyo | 
+| CHARTING STYLE: targetBeat, noteType|
+| targetBeat: a float denoting the beat where note noteType will arrive at the hit point. Using regular musical notation: 1 = quarter note, 2 = half note, 0.5 = eighth note, 0.25 sixtheenth, etc | 
+| noteType: An enum that determines the type of note to be spawned. View SongObject.cs to see available note types. |
 4, Note
 6, GhostNote
 8, GhostNote
@@ -95,3 +99,56 @@
 92.5, GhostNote
 93, Note
 94, Note
+96, Note
+96.5, Note
+97, Note
+97.5, GhostNote
+98, Note
+99, Note
+99.5, Note
+100, Note
+100.5, GhostNote
+101, Note
+
+102, Note
+102.5, Note
+103, Note
+103.5, GhostNote
+104, Note
+
+105, Note
+105.5, Note
+106, Note
+106.5, GhostNote
+107, Note
+
+106, Note
+106.5, Note
+107, Note
+107.5, GhostNote
+108, Note
+
+109, Note
+109.5, Note
+110, Note
+110.5, GhostNote
+111, Note
+
+112, Note
+112.5, Note
+113, Note
+113.5, GhostNote
+114, Note
+
+115, Note
+115.5, Note
+116, Note
+116.5, GhostNote
+117, Note
+
+118, Note
+118.5, Note
+119, Note
+119.5, GhostNote
+120, Note
+121, Note

@@ -8,6 +8,9 @@ public class NoteScript : MonoBehaviour
     [Tooltip("Value of the individual note")]
     public float pointValue;
 
+    [Tooltip("health of a note; different notes will have different health values; the player must hit the note equal to it's health in one beat/during the timing window to kill it")]
+    public int healthValue = 1;
+
     [Tooltip("The % threshold for when the note is removed after passing the hitpoint. Base value is 1.2 (20% past the hit point the note is removed)")]
     [SerializeField] protected float removeThreshold = 1.2f;
 
@@ -28,7 +31,7 @@ public class NoteScript : MonoBehaviour
     protected virtual void moveNote()
     {
         //AI assistance for the variables below
-        float secOffset = ConductorScript.Instance.songOffset / 1000f;
+        float secOffset = ConductorScript.Instance.globalOffset / 1000f;
         float beatOffset = secOffset / ConductorScript.Instance.secPerBeat;
         float fakeCurrentBeat = TrackHandler.currentBeat + beatOffset;
         
@@ -52,5 +55,17 @@ public class NoteScript : MonoBehaviour
     public void destroyThisNote()
     {
         Destroy(gameObject);
+    }
+
+   public bool takeDamage()
+    {
+        healthValue--;
+
+        return healthValue <= 0;
+    }
+    
+    public int returnCurrentHealth()
+    {
+        return healthValue;
     }
 }
