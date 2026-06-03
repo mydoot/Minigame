@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
+using System.IO;
 
 // Handles spawning in the notes and moving them betwen the spawn point and the hit point, a "2nd game manager"
 
@@ -40,6 +41,8 @@ public class TrackHandler : MonoBehaviour
 
     public static OnNoteHit onNoteHit;
 
+
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -63,13 +66,7 @@ public class TrackHandler : MonoBehaviour
 
     }
 
-    /* 
-        TODO
-        - Create a list/other method to contain the "chart" of the track
-        - create a function that recalculates the target beat
-        - solidify designs
 
-    */
     void Update()
     {
         debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats} | Song Duration Elapsed: {ConductorScript.Instance.songPosition} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
@@ -150,13 +147,14 @@ public class TrackHandler : MonoBehaviour
             if (adjSongPosition > purgeTime)
             {
                 handleNoteMissed(upcomingNote);
-            } else
+            }
+            else
             {
                 break;
             }
 
-        } 
-       
+        }
+
         if (failure >= 10)
         {
             Debug.LogError("Catastrophic failure in removeOldNotes(): The counter reached it's target value and the function has been stopped");

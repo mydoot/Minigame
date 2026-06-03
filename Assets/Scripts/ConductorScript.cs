@@ -3,6 +3,8 @@ using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine.Events;
 using System.Collections;
+using System.IO;
+using System.Collections.Generic;
 
 /* 
 FUTURE CHANGES
@@ -66,6 +68,7 @@ public class ConductorScript : MonoBehaviour
         songBpm = Song.BPM;
 
         //Calculate the number of seconds in each beat
+        // duration of a quarter note
         secPerBeat = 60f / songBpm;
 
         //StartCoroutine(waitForStart(0));
@@ -106,4 +109,8 @@ public class ConductorScript : MonoBehaviour
         
         songHasStarted = true;
     }
+
+   
+
+    
 }
