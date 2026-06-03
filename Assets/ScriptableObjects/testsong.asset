@@ -15,22 +15,22 @@ MonoBehaviour:
   trackData: {fileID: 8300000, guid: 679641740dce4e342bbf5d51e411b219, type: 3}
   trackName: Jumper (from GD)
   BPM: 175
-  Chart:
+  chart:
   - targetBeat: 1
-    type: 0
-  - targetBeat: 2
-    type: 0
-  - targetBeat: 3
     type: 0
   - targetBeat: 4
     type: 0
-  - targetBeat: 5
-    type: 0
-  - targetBeat: 6
-    type: 0
-  - targetBeat: 7
-    type: 0
   - targetBeat: 8
     type: 0
-  - targetBeat: 9
+  - targetBeat: 16
     type: 0
+  - targetBeat: 17
+    type: 1
+  - targetBeat: 18
+    type: 0
+  - targetBeat: 19
+    type: 1
+  - targetBeat: 20
+    type: 0
+  - targetBeat: 21
+    type: 1

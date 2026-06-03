@@ -106,5 +106,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GhostNoteScript
   targetBeat: 0
   pointValue: 2
-  removeThreshold: 1.055
-  transparencySpeed: 1
+  removeThreshold: 1.1
+  transparencySpeed: 1.33

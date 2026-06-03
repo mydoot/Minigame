@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class GhostNoteScript : NoteScript
 {
-    //[SerializeField] private float transparencySpeed;
+    [Tooltip("Multiplier of how fast the ghost note disappears")]
+    [SerializeField] private float transparencySpeed = 1.33f;
     private SpriteRenderer sprite;
 
     void Start()
@@ -15,8 +16,10 @@ public class GhostNoteScript : NoteScript
     {
         base.moveNote();
 
-        Color currCol = sprite.material.color;
+        Color currCol = sprite.color;
         
-        currCol.a = Mathf.Lerp(currCol.a, 0, base.threshold);
+        currCol.a = Mathf.Lerp(1f, 0f, threshold * transparencySpeed);
+
+        sprite.color = currCol;
     }
 }

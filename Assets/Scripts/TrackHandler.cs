@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class TrackHandler : MonoBehaviour
 {
-    public static TrackHandler Instance { get; private set; } 
+    public static TrackHandler Instance { get; private set; }
 
     private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
 
@@ -21,7 +21,7 @@ public class TrackHandler : MonoBehaviour
 
     [SerializeField] public Transform hitPoint;
     [SerializeField] public Transform spawnPoint;
-    
+
     // PUBLIC STATIC VARIABLES
     public static float currentBeat;
     public static float shownBeats = 4f;
@@ -32,8 +32,11 @@ public class TrackHandler : MonoBehaviour
 
     // EVENTS
     public delegate void OnNoteMissed();
+    public delegate void OnNoteHit();
 
     public static OnNoteMissed onNoteMissed;
+
+    public static OnNoteHit onNoteHit;
 
     void Awake()
     {
@@ -74,11 +77,38 @@ public class TrackHandler : MonoBehaviour
             spawnNotes();
         }
 
+        // handle inputs
+        if (UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) //change this later
+        {
+            hitNote();
+        }
+
+
+
+    }
+
+    void hitNote()
+    {
+        if (noteSpawns.Count > 0)
+        {
+            NoteScript upcomingNote = Notes[0];
+
+            float diff = Mathf.Abs(upcomingNote.targetBeat - currentBeat);
+
+            if (diff <= 0.15f)
+            {
+                Debug.Log("hit!");
+                onNoteHit?.Invoke();
+                Notes.Remove(upcomingNote);
+                upcomingNote.destroyThisNote();
+            }
+        }
     }
 
     void handleNoteMissed()
     {
-        Debug.Log("note missed!");
+        //Debug.Log("rip")
+
     }
 
     void spawnNotes()
@@ -94,12 +124,13 @@ public class TrackHandler : MonoBehaviour
             {
                 if (noteDictionary.TryGetValue(chosenNote, out NoteScript obj))
                 {
-                NoteScript Note = Instantiate(obj, spawnPoint.position, Quaternion.identity);
-                Note.targetBeat = nextTargetBeat;
-                Notes.Add(Note);
+                    NoteScript Note = Instantiate(obj, spawnPoint.position, Quaternion.identity);
+                    Note.targetBeat = nextTargetBeat;
+                    Notes.Add(Note);
 
-                noteSpawns.Dequeue();   
-                } else
+                    noteSpawns.Dequeue();
+                }
+                else
                 {
                     Debug.LogError("That note doesn't exist");
                 }
