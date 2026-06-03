@@ -16,6 +16,7 @@ public class TrackHandler : MonoBehaviour
     [Tooltip("Note prefab")]
     [SerializeField] private NoteScript note;
     [SerializeField] private GhostNoteScript ghostNote;
+    [SerializeField] private CapsuleNoteScript capsuleNote;
 
     [SerializeField] private TextMeshProUGUI debugText;
 
@@ -58,19 +59,20 @@ public class TrackHandler : MonoBehaviour
 
     void Start()
     {
-        //onNoteMissed/subscribes this function to the onNoteMissed event
 
-        //temp charting
+        //charting
         noteSpawns = new Queue<Chart>(ConductorScript.Instance.Song.chart);
 
+        //this needs to be updated for every new note type
         noteDictionary.Add(noteType.Note, note);
         noteDictionary.Add(noteType.GhostNote, ghostNote);
+        noteDictionary.Add(noteType.CapsuleNote, capsuleNote);
     }
 
 
     void Update()
     {
-        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats} | Song Duration Elapsed: {ConductorScript.Instance.songPosition} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
+        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
 
         currentSongPosition = ConductorScript.Instance.songPosition;
         currentBeat = ConductorScript.Instance.songPositionInBeats;
@@ -97,9 +99,11 @@ public class TrackHandler : MonoBehaviour
         {
             NoteScript upcomingNote = Notes[0];
 
-            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.songOffset / 1000f);
+            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.globalOffset / 1000f);
 
             float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
+
+            Debug.Log($"note target beat: {upcomingNote.targetBeat:F2}");
 
             float diff = Mathf.Abs(targetTime - adjSongPosition);
 
@@ -107,15 +111,48 @@ public class TrackHandler : MonoBehaviour
 
             UIScript.diffDebug?.Invoke(msDiff);
 
-            if (msDiff <= 70f)
+            if (upcomingNote.returnCurrentHealth() > 1)
             {
-                Debug.Log("hit!");
-                onNoteHit?.Invoke();
+                float largeTargetWindow = ConductorScript.Instance.secPerBeat * 1000f;
+                if (msDiff <= largeTargetWindow)
+                {
+                    Debug.Log("hit!");
+                    onNoteHit?.Invoke();
 
-                Notes.Remove(upcomingNote);
-                upcomingNote.destroyThisNote();
+                    bool noteDead = upcomingNote.takeDamage();
+
+                    if (noteDead)
+                    {
+                            Notes.Remove(upcomingNote);
+                            upcomingNote.destroyThisNote();
+                    }
+                    
+                }
+            }
+            else
+            {
+                if (msDiff <= 70f)
+                {
+                    Debug.Log("hit!");
+                    onNoteHit?.Invoke();
+
+                    bool noteDead = upcomingNote.takeDamage();
+
+                    if (noteDead)
+                    {
+                        Notes.Remove(upcomingNote);
+                        upcomingNote.destroyThisNote();
+                    }
+                }
             }
 
+            /* else if (msDiff <= 125f)
+            {
+                Debug.Log("bad!");
+                onNoteMissed?.Invoke();
+                
+                handleNoteMissed(upcomingNote);
+            } */
         }
     }
 
@@ -126,6 +163,8 @@ public class TrackHandler : MonoBehaviour
             Debug.Log("miss!");
             Notes.Remove(note);
             onNoteMissed?.Invoke();
+
+            //additionally add logic for reducing the PLAYER health
         }
     }
 
@@ -136,7 +175,7 @@ public class TrackHandler : MonoBehaviour
         {
             NoteScript upcomingNote = Notes[0];
 
-            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.songOffset / 1000f);
+            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.globalOffset / 1000f);
 
             float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
 

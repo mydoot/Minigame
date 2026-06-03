@@ -106,4 +106,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NoteScript
   targetBeat: 0
   pointValue: 1
+  healthValue: 1
   removeThreshold: 1.05

@@ -1,29 +1,17 @@
-1, Note
+| Song: Jumper - Waterflame | 
+| CHARTING STYLE: targetBeat, noteType|
+| targetBeat: a float denoting the beat where note noteType will arrive at the hit point. Using regular musical notation: 1 = quarter note, 2 = half note, 0.5 = eighth note, 0.25 sixtheenth, etc | 
+| noteType: An enum that determines the type of note to be spawned. View SongObject.cs to see available note types. |
 4, Note
 8, Note
+12, Note
 16, Note
-17, GhostNote
-18, Note
-19, GhostNote
 20, Note
-21, Note
-22, Note
-23, Note
 24, Note
-25, Note
-26, Note
-27, Note
 28, Note
-29, Note
-30, Note
-34, Note
-38, Note
-42, Note
-46, Note
-50, Note
-51, Note
-51.5, Note
-53, Note
-53.5, Note
-55, Note
-55.5, Note
+32, Note
+34, CapsuleNote
+35, CapsuleNote
+36, CapsuleNote
+37, CapsuleNote
+38, CapsuleNote

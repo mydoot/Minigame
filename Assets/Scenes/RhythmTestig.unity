@@ -150,10 +150,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   note: {fileID: 3070916930067278322, guid: 0f9e2a8b0f596f542ae2d70f066b90ee, type: 3}
   ghostNote: {fileID: 2068881631369065918, guid: 1074e445bb5d84c4db9cf1aa2d019041, type: 3}
+  capsuleNote: {fileID: 8978350118036394927, guid: 8ffc104fbd115854f84cbf1f21f7ec79, type: 3}
   debugText: {fileID: 1032861851}
   hitPoint: {fileID: 2141785240}
   spawnPoint: {fileID: 358107969}
-  currentSongPosition: 0
   Notes: []
 --- !u!4 &42339178
 Transform:
@@ -297,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c67114ffb7e38d4295f3b39b9821cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Song: {fileID: 11400000, guid: 4882e80cc5b820143b3d39cd83b001bd, type: 2}
+  Song: {fileID: 11400000, guid: c8285b817a6dc0f45a0e1c54e91c30ae, type: 2}
   songBpm: 0
   secPerBeat: 0
   songPosition: 0
