@@ -7,12 +7,11 @@ using TMPro;
 
 public class TrackHandler : MonoBehaviour
 {
-    public static TrackHandler Instance { get; private set; } //Turns GameManager into a singleton
+    public static TrackHandler Instance { get; private set; } 
 
     // PRIVATE VARIABLES
+    [Tooltip("Note prefab")]
     [SerializeField] private NoteScript note;
-
-    [SerializeField] private ConductorScript conductor;
 
     [SerializeField] private TextMeshProUGUI debugText;
 
@@ -44,7 +43,7 @@ public class TrackHandler : MonoBehaviour
 
     void Start()
     {
-        onNoteMissed += handleNoteMissed;
+        onNoteMissed += handleNoteMissed; //subscribes this function to the onNoteMissed event
 
         //temp charting
         noteSpawns.Enqueue(1f);
@@ -66,11 +65,11 @@ public class TrackHandler : MonoBehaviour
     */
     void Update()
     {
-        debugText.text = $"Current Beat: {currentBeat} | Song Duration Elapsed: {conductor.songPosition} | songHasStarted:{conductor.songHasStarted}";
+        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats} | Song Duration Elapsed: {ConductorScript.Instance.songPosition} | songHasStarted:{ConductorScript.Instance.songHasStarted} | Notes to spawn: {noteSpawns.Count}";
 
-        currentBeat = conductor.songPositionInBeats;
+        currentBeat = ConductorScript.Instance.songPositionInBeats;
 
-        if (conductor.songHasStarted)
+        if (ConductorScript.Instance.songHasStarted)
         {
             spawnNotes();
         }
@@ -86,9 +85,10 @@ public class TrackHandler : MonoBehaviour
     {
         if (noteSpawns.Count > 0)
         {
-            //Debug.Log(noteSpawns.Count);
+            // looks at the next target beat in the noteSpawns list
             float nextTargetBeat = noteSpawns.Peek();
 
+            // if the note can be spawned from the current beat and also within the next 4, spawn the note
             if ((currentBeat + shownBeats) >= nextTargetBeat)
             {
                 NoteScript Note = Instantiate(note, spawnPoint.position, Quaternion.identity);

@@ -12,6 +12,7 @@ FUTURE CHANGES
 
 public class ConductorScript : MonoBehaviour
 {
+    public static ConductorScript Instance { get; private set; } 
 
     [SerializeField] private SongObject Song;
 
@@ -32,7 +33,7 @@ public class ConductorScript : MonoBehaviour
     public float songPositionInBeats;
 
     //How many seconds have passed since the song started
-    [Tooltip("The amount of seconds that have passed since song started; Begins negative due to the delay.")]
+    [Tooltip("The amount of seconds that have passed since song started (universal); Rely on songPosition and songPositionInBeats for specific song elapsed time")]
     public float dspSongTime;
 
     [Tooltip("The amount of delay before the song actually starts. The minimum should be 2s.")]
@@ -46,6 +47,16 @@ public class ConductorScript : MonoBehaviour
 
     public bool songHasStarted = false;
 
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;    
+    }
+    
     void Start()
     {
         songHasStarted = false;
@@ -88,7 +99,7 @@ public class ConductorScript : MonoBehaviour
         //Record the time when the music starts
         dspSongTime = (float)AudioSettings.dspTime + delay;
 
-        Debug.Log("song starts in 4");
+        Debug.Log($"song starts in {delay}");
 
         //Start the music
         musicSource.PlayScheduled(dspSongTime);
