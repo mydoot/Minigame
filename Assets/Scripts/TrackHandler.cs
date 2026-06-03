@@ -11,7 +11,6 @@ public class TrackHandler : MonoBehaviour
 {
     public static TrackHandler Instance { get; private set; }
 
-    private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
 
     // PRIVATE VARIABLES
     [Tooltip("Note prefab")]
@@ -23,12 +22,16 @@ public class TrackHandler : MonoBehaviour
     [SerializeField] public Transform hitPoint;
     [SerializeField] public Transform spawnPoint;
 
+    // PRIVATE DATA TYPES
+    private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
+
     // PUBLIC STATIC VARIABLES
     public static float currentBeat;
 
-    public float currentSongPosition;
+    public static float currentSongPosition;
     public static float shownBeats = 4f;
 
+    // PUBLIC DATA TYPES
     public Queue<Chart> noteSpawns;
 
     public List<NoteScript> Notes = new List<NoteScript>();
@@ -62,8 +65,6 @@ public class TrackHandler : MonoBehaviour
 
         noteDictionary.Add(noteType.Note, note);
         noteDictionary.Add(noteType.GhostNote, ghostNote);
-
-
     }
 
 
@@ -102,15 +103,13 @@ public class TrackHandler : MonoBehaviour
 
             float diff = Mathf.Abs(targetTime - adjSongPosition);
 
-            float msDiff = diff * 1000f;
+            float msDiff = diff * 1000f; //turn diff into millisecond value
 
             UIScript.diffDebug?.Invoke(msDiff);
 
             if (msDiff <= 70f)
             {
                 Debug.Log("hit!");
-
-
                 onNoteHit?.Invoke();
 
                 Notes.Remove(upcomingNote);
@@ -132,9 +131,8 @@ public class TrackHandler : MonoBehaviour
 
     void removeOldNotes()
     {
-        int failure = 0;
 
-        while (Notes.Count > 0 && failure >= 10)
+        while (Notes.Count > 0)
         {
             NoteScript upcomingNote = Notes[0];
 
@@ -153,11 +151,6 @@ public class TrackHandler : MonoBehaviour
                 break;
             }
 
-        }
-
-        if (failure >= 10)
-        {
-            Debug.LogError("Catastrophic failure in removeOldNotes(): The counter reached it's target value and the function has been stopped");
         }
     }
 

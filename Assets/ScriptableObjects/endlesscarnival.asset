@@ -46,7 +46,7 @@ MonoBehaviour:
     type: 1
   - targetBeat: 32
     type: 0
-  - targetBeat: 32.75
+  - targetBeat: 33
     type: 1
   - targetBeat: 34.5
     type: 0
@@ -54,17 +54,159 @@ MonoBehaviour:
     type: 1
   - targetBeat: 36
     type: 0
-  - targetBeat: 36.75
+  - targetBeat: 37
     type: 1
   - targetBeat: 38.5
     type: 0
   - targetBeat: 39
     type: 1
   - targetBeat: 40
-    type: 1
-  - targetBeat: 40.75
+    type: 0
+  - targetBeat: 41
     type: 1
   - targetBeat: 42.5
-    type: 1
+    type: 0
   - targetBeat: 43
     type: 1
+  - targetBeat: 44
+    type: 0
+  - targetBeat: 45
+    type: 1
+  - targetBeat: 46.5
+    type: 0
+  - targetBeat: 47
+    type: 1
+  - targetBeat: 48
+    type: 0
+  - targetBeat: 49
+    type: 1
+  - targetBeat: 50.5
+    type: 0
+  - targetBeat: 51
+    type: 1
+  - targetBeat: 52
+    type: 0
+  - targetBeat: 53
+    type: 1
+  - targetBeat: 54.5
+    type: 0
+  - targetBeat: 55
+    type: 1
+  - targetBeat: 56
+    type: 0
+  - targetBeat: 57
+    type: 1
+  - targetBeat: 58.5
+    type: 0
+  - targetBeat: 59
+    type: 1
+  - targetBeat: 60
+    type: 0
+  - targetBeat: 61
+    type: 1
+  - targetBeat: 62.5
+    type: 0
+  - targetBeat: 63
+    type: 1
+  - targetBeat: 64
+    type: 0
+  - targetBeat: 64.5
+    type: 0
+  - targetBeat: 65
+    type: 0
+  - targetBeat: 65.5
+    type: 1
+  - targetBeat: 66
+    type: 0
+  - targetBeat: 67
+    type: 0
+  - targetBeat: 67.5
+    type: 0
+  - targetBeat: 68
+    type: 0
+  - targetBeat: 68.5
+    type: 1
+  - targetBeat: 69
+    type: 0
+  - targetBeat: 70
+    type: 0
+  - targetBeat: 70.5
+    type: 0
+  - targetBeat: 71
+    type: 0
+  - targetBeat: 71.5
+    type: 1
+  - targetBeat: 72
+    type: 0
+  - targetBeat: 73
+    type: 0
+  - targetBeat: 73.5
+    type: 0
+  - targetBeat: 74
+    type: 0
+  - targetBeat: 74.5
+    type: 1
+  - targetBeat: 75
+    type: 0
+  - targetBeat: 76
+    type: 0
+  - targetBeat: 76.5
+    type: 0
+  - targetBeat: 77
+    type: 0
+  - targetBeat: 77.5
+    type: 1
+  - targetBeat: 78
+    type: 0
+  - targetBeat: 79
+    type: 0
+  - targetBeat: 79.5
+    type: 0
+  - targetBeat: 80
+    type: 0
+  - targetBeat: 80.5
+    type: 1
+  - targetBeat: 81
+    type: 0
+  - targetBeat: 82
+    type: 0
+  - targetBeat: 82.5
+    type: 0
+  - targetBeat: 83
+    type: 0
+  - targetBeat: 83.5
+    type: 1
+  - targetBeat: 84
+    type: 0
+  - targetBeat: 85
+    type: 0
+  - targetBeat: 85.5
+    type: 0
+  - targetBeat: 86
+    type: 0
+  - targetBeat: 86.5
+    type: 1
+  - targetBeat: 87
+    type: 0
+  - targetBeat: 88
+    type: 0
+  - targetBeat: 88.5
+    type: 0
+  - targetBeat: 89
+    type: 0
+  - targetBeat: 89.5
+    type: 1
+  - targetBeat: 90
+    type: 0
+  - targetBeat: 91
+    type: 0
+  - targetBeat: 91.5
+    type: 0
+  - targetBeat: 92
+    type: 0
+  - targetBeat: 92.5
+    type: 1
+  - targetBeat: 93
+    type: 0
+  - targetBeat: 94
+    type: 0

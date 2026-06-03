@@ -27,6 +27,7 @@ public class NoteScript : MonoBehaviour
 
     protected virtual void moveNote()
     {
+        //AI assistance for the variables below
         float secOffset = ConductorScript.Instance.songOffset / 1000f;
         float beatOffset = secOffset / ConductorScript.Instance.secPerBeat;
         float fakeCurrentBeat = TrackHandler.currentBeat + beatOffset;

@@ -6,12 +6,6 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 
-/* 
-FUTURE CHANGES
- - Change loading the audio to use a scriptable object to easily load both the music and it's BPM (+ other things like song name and jacket art, etc)
-
-*/
-
 public class ConductorScript : MonoBehaviour
 {
     public static ConductorScript Instance { get; private set; } 
@@ -88,14 +82,6 @@ public class ConductorScript : MonoBehaviour
             songPositionInBeats = songPosition / secPerBeat;
         }
     }
-
-    /* IEnumerator waitForStart(float offset)
-    {
-        yield return new WaitForSeconds(2f + offset); //wait 1s + offset of the song before we actually begin
-        Debug.Log("songhasstarted");
-        songHasStarted = true;
-        beginSong();
-    } */
 
     void beginSong()
     {
