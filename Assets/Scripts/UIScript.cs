@@ -63,7 +63,7 @@ public class UIScript : MonoBehaviour
             realComboUI.transform.localScale = Vector3.one;
         }
 
-        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.1f,0,0.1f);
+        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.25f,0,0.1f);
     }
 
     void decreaseCombo()
