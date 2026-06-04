@@ -1,9 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class SceneManager : MonoBehaviour
+public class SceneManagerMini : MonoBehaviour
 {
-    public static SceneManager Instance { get; private set; }
+    public static SceneManagerMini Instance { get; private set; }
     private void Awake()
     {
         if (Instance == null)
@@ -16,6 +17,18 @@ public class SceneManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
     [SerializeField] private string mainMenuSceneName = "MainMenu";
     [SerializeField] private string gameSceneName = "GameScene";
 
@@ -32,5 +45,13 @@ public class SceneManager : MonoBehaviour
     public void LoadScene(string sceneName)
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (scene.name == "RhythmTestig")
+        {
+            ConductorScript.Instance.beginSong();
+        }
     }
 }

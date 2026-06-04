@@ -147,7 +147,7 @@ public class TrackHandler : MonoBehaviour
                     }
                 }
             }
-
+            
             /* else if (msDiff <= 125f)
             {
                 Debug.Log("bad!");

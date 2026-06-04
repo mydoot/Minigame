@@ -5,18 +5,19 @@ using UnityEngine.Events;
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public enum noteType
 {
     Note,
     GhostNote,
-    CapsuleNote, 
+    CapsuleNote,
     TriangleNote
 }
 
 public class ConductorScript : MonoBehaviour
 {
-    public static ConductorScript Instance { get; private set; } 
+    public static ConductorScript Instance { get; private set; }
 
     [Header("Song ScriptableObject")]
     [SerializeField] public SongObject Song;
@@ -34,7 +35,7 @@ public class ConductorScript : MonoBehaviour
     [Tooltip("current song position in seconds, adjusted for possible song offsets")]
     public float songPosition;
 
-     [Tooltip("current song positio in seconds ignoring possible song offsets")]
+    [Tooltip("current song positio in seconds ignoring possible song offsets")]
     public double absoluteSongPosition;
 
     //Current song position, in beats
@@ -51,11 +52,12 @@ public class ConductorScript : MonoBehaviour
 
     [Tooltip("Global offset in milliseconds. Used for better game feel")]
     public float globalOffset;
-    
+
     public bool songHasStarted = false;
 
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -63,24 +65,16 @@ public class ConductorScript : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Instance = this;    
+        Instance = this;
     }
-    
+
     void Start()
     {
-        songHasStarted = false;
-
-        //loading SongObject data
-        musicSource.clip = Song.trackData;
-        songBpm = Song.BPM;
-
-        //Calculate the number of seconds in each beat
-        // duration of a quarter note
-        secPerBeat = 60f / songBpm;
-
-        //StartCoroutine(waitForStart(0));
-
-        beginSong();
+        loadCurrentSong();
+        if (songBpm == Song.BPM)
+        {
+            beginSong();
+        }
     }
 
     // Update is called once per frame
@@ -98,8 +92,8 @@ public class ConductorScript : MonoBehaviour
         }
     }
 
-    void beginSong()
-    {   
+    public void beginSong()
+    {
         if (Song.songOffset > 0)
         {
             Debug.Log($"adjusted individual song offset due to delayed start by {Song.songOffset}");
@@ -112,11 +106,25 @@ public class ConductorScript : MonoBehaviour
 
         //Start the music
         musicSource.PlayScheduled(dspSongTime);
-        
+
         songHasStarted = true;
     }
 
-   
+    public void loadCurrentSong()
+    {
+        songHasStarted = false;
 
-    
+        //loading SongObject data
+        musicSource.clip = Song.trackData;
+        songBpm = Song.BPM;
+
+        //Calculate the number of seconds in each beat
+        // duration of a quarter note
+        secPerBeat = 60f / songBpm;
+
+        //StartCoroutine(waitForStart(0));
+    }
+
+
+
 }
