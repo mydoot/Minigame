@@ -1,0 +1,755 @@
+fileFormatVersion: 2
+guid: 1561da1b19761204cb12120a5da8825d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1773448257466710440
+    second: slashing_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: slashing_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a9b6d54bcd8c9810800000000000000
+      internalID: 1773448257466710440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1145e7f89516414caed26fe4741aeb5
+      internalID: 1044649779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00dc9d3ff1adfb0449061706242d6d02
+      internalID: -862675431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c09c25db822d9408f25dd8c7082283
+      internalID: 1258081450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_4
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 901e20e2068a6ad4f93487eba19b699a
+      internalID: 408862508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_5
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12d0a1eef1681024da5060a3cee49858
+      internalID: -116162409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_6
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 8960
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ae953bfa366aa9499877418045df86d
+      internalID: -1779210112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0d51d8055efd594881db6b8f9534a5a
+      internalID: -1707227029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_8
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce70462bde2f78145b164026e015c8f7
+      internalID: -1676697146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_9
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eb7e9b4a40442543a1255f65a8a0c02
+      internalID: -2075608408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_10
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfef947bf71528f489f77f1a35c17adc
+      internalID: -1642578771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_11
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d668e3491a0655f4eb42a176f0dadaa1
+      internalID: 1211715505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_12
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c74ed91c9420da4982269b2e73d408a
+      internalID: -1228929728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_13
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 8320
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd04d6b23cb9bd042a2aa08fb54c632d
+      internalID: -671834643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0beecd721fd30488434e6f3b4816b5
+      internalID: 544830096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_15
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f691d2e01a5fa468ea2f4f51cd6e28
+      internalID: 73058786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_16
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a5bf3305d9e2a445a10c15c6e4626b3
+      internalID: 1331641460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_17
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 513eb1faa5cffa943807410dc13c5e6a
+      internalID: -434943552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_18
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba1df29535f1ee749ace4966cf455ff4
+      internalID: -1662694179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_19
+      rect:
+        serializedVersion: 2
+        x: 3200
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d19747a43050b054d975c78527b0e6e4
+      internalID: -1152576623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_20
+      rect:
+        serializedVersion: 2
+        x: 3840
+        y: 7680
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aceb45d77e5a4da4093860f0e1aa2cd1
+      internalID: -1461906653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7040
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef3f4cb4cde2584989f924ede3952b2
+      internalID: -795070333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_22
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 7040
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9bc66b1c5841ac4ab8299acfaab3f16
+      internalID: 2060367981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: slashing_23
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 7040
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 935bedfb604d30b4ab312cba5c4f0cc8
+      internalID: 661839708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 499c0966e3251604daf23743dcba1bc6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":640.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      slashing_0: 1773448257466710440
+      slashing_1: 1044649779
+      slashing_10: -1642578771
+      slashing_100: -1269624807
+      slashing_101: -1846536613
+      slashing_102: 421614085
+      slashing_103: -2075747175
+      slashing_104: -2106427846
+      slashing_11: 1211715505
+      slashing_12: -1228929728
+      slashing_13: -671834643
+      slashing_14: 544830096
+      slashing_15: 73058786
+      slashing_16: 1331641460
+      slashing_17: -434943552
+      slashing_18: -1662694179
+      slashing_19: -1152576623
+      slashing_2: -862675431
+      slashing_20: -1461906653
+      slashing_21: -795070333
+      slashing_22: 2060367981
+      slashing_23: 661839708
+      slashing_24: 957399700
+      slashing_25: -211658988
+      slashing_26: 236843679
+      slashing_27: 774714788
+      slashing_28: -344175796
+      slashing_29: -125575705
+      slashing_3: 1258081450
+      slashing_30: 1790595625
+      slashing_31: -402315550
+      slashing_32: -1494678083
+      slashing_33: 2038697995
+      slashing_34: 13387380
+      slashing_35: -319129695
+      slashing_36: 1601294936
+      slashing_37: 64706948
+      slashing_38: -708873518
+      slashing_39: 1005902867
+      slashing_4: 408862508
+      slashing_40: -106129690
+      slashing_41: 1537439583
+      slashing_42: -1421442036
+      slashing_43: -871890312
+      slashing_44: -555919948
+      slashing_45: 726951194
+      slashing_46: -1837970934
+      slashing_47: 656430716
+      slashing_48: 1275440075
+      slashing_49: -1880387521
+      slashing_5: -116162409
+      slashing_50: 176215968
+      slashing_51: 242917708
+      slashing_52: 235309879
+      slashing_53: 1908723424
+      slashing_54: -1054869968
+      slashing_55: 371423049
+      slashing_56: 1296315849
+      slashing_57: 5092557
+      slashing_58: 1228334204
+      slashing_59: 504122483
+      slashing_6: -1779210112
+      slashing_60: -1263920459
+      slashing_61: 1963396895
+      slashing_62: -486457488
+      slashing_63: -286369355
+      slashing_64: 1095285559
+      slashing_65: -1172125869
+      slashing_66: 403705297
+      slashing_67: 1141107391
+      slashing_68: 636862200
+      slashing_69: 542593931
+      slashing_7: -1707227029
+      slashing_70: 1017769661
+      slashing_71: 94608294
+      slashing_72: -1122913214
+      slashing_73: 2090132683
+      slashing_74: -797825354
+      slashing_75: -396793191
+      slashing_76: -1826086100
+      slashing_77: -1825319345
+      slashing_78: -1798702709
+      slashing_79: -1805660593
+      slashing_8: -1676697146
+      slashing_80: -1920365593
+      slashing_81: -1021321985
+      slashing_82: -1683829453
+      slashing_83: -1092386786
+      slashing_84: 713026703
+      slashing_85: -1040060130
+      slashing_86: -1682114863
+      slashing_87: -286925182
+      slashing_88: -294464129
+      slashing_89: -1760575210
+      slashing_9: -2075608408
+      slashing_90: 1186371468
+      slashing_91: 1065924308
+      slashing_92: -1674397182
+      slashing_93: 1672693074
+      slashing_94: 1945730069
+      slashing_95: -1164666444
+      slashing_96: 1576370003
+      slashing_97: 213662815
+      slashing_98: -1435308249
+      slashing_99: 1002494731
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

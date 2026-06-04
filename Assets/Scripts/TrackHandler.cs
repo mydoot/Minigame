@@ -47,7 +47,9 @@ public class TrackHandler : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI debugText;
 
-
+    [Header("Score")]
+    public int hitCount = 0;
+    public int missedCount = 0;
 
 
     void Awake()
@@ -75,7 +77,8 @@ public class TrackHandler : MonoBehaviour
 
     void Update()
     {
-        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | ms per beat {ConductorScript.Instance.secPerBeat * 1000f:F2} | Notes to spawn: {noteSpawns.Count}";
+        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | ms per beat {ConductorScript.Instance.secPerBeat * 1000f:F2} | Notes to spawn: {noteSpawns.Count} | Hits: {hitCount} | Misses: {missedCount} |";
+
 
         currentSongPosition = ConductorScript.Instance.songPosition;
         currentBeat = ConductorScript.Instance.songPositionInBeats;
@@ -120,6 +123,7 @@ public class TrackHandler : MonoBehaviour
                 if (msDiff <= largeTargetWindow + 150f) //adding in a temporary 150ms of extra padding for health notes
                 {
                     Debug.Log("hit!");
+                    hitCount++;
                     onNoteHit?.Invoke();
 
                     bool noteDead = upcomingNote.takeDamage();
@@ -164,6 +168,7 @@ public class TrackHandler : MonoBehaviour
         if (Notes.Contains(note))
         {
             Debug.Log("miss!");
+            missedCount++;
             Notes.Remove(note);
             onNoteMissed?.Invoke();
 
