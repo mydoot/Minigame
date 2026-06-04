@@ -6,6 +6,7 @@ using System.Collections;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public enum noteType
 {
@@ -76,7 +77,14 @@ public class ConductorScript : MonoBehaviour
 
     void Start()
     {
+        TrackHandler.onSongEnd += EndSong;
+        
         loadCurrentSong();
+    }
+
+    void OnDestroy()
+    {
+        TrackHandler.onSongEnd -= EndSong;
     }
 
     // Update is called once per frame
@@ -134,6 +142,17 @@ public class ConductorScript : MonoBehaviour
 
         beginSong();
     }
+
+    private void EndSong()
+    {
+        Debug.Log("ending song, returning to main menu (or showing results screen)");
+        musicSource.DOFade(0f, 5f).OnComplete(()=>{
+            //show results, etc
+
+            SceneManagerMini.Instance.LoadMainMenu();
+        });
+    }
+
 
 
 

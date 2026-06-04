@@ -51,7 +51,7 @@ public class SceneManagerMini : MonoBehaviour
     {
         if (scene.name == "RhythmTestig")
         {
-            ConductorScript.Instance.beginSong();
+            //ConductorScript.Instance.beginSong();
         }
     }
 }

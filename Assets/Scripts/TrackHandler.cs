@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 using System.IO;
+using System.Collections;
 
 // Handles spawning in the notes and moving them betwen the spawn point and the hit point, a "2nd game manager"
 
@@ -20,9 +21,11 @@ public class TrackHandler : MonoBehaviour
     [SerializeField] public Transform hitPoint;
     [SerializeField] public Transform spawnPoint;
 
+    private bool chartIsOver = false;
+
     // PRIVATE DATA TYPES
     private Dictionary<noteType, NoteScript> noteDictionary = new Dictionary<noteType, NoteScript>();
-    
+
     // PUBLIC STATIC VARIABLES
     public static float currentBeat;
 
@@ -38,10 +41,13 @@ public class TrackHandler : MonoBehaviour
     // EVENTS
     public delegate void OnNoteMissed();
     public delegate void OnNoteHit();
+    public delegate void OnSongEnd();
 
     public static OnNoteMissed onNoteMissed;
 
     public static OnNoteHit onNoteHit;
+
+    public static OnSongEnd onSongEnd;
 
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI debugText;
@@ -74,7 +80,7 @@ public class TrackHandler : MonoBehaviour
 
     void Update()
     {
-        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | ms per beat {ConductorScript.Instance.secPerBeat * 1000f:F2} | Notes to spawn: {noteSpawns.Count}";
+        debugText.text = $"Current Beat: {ConductorScript.Instance.songPositionInBeats:F2} | Song Duration Elapsed: {ConductorScript.Instance.songPosition:F2} | ms per beat {ConductorScript.Instance.secPerBeat * 1000f:F2} | chartIsOver: {chartIsOver} | Notes to spawn: {noteSpawns.Count}";
 
         currentSongPosition = ConductorScript.Instance.songPosition;
         currentBeat = ConductorScript.Instance.songPositionInBeats;
@@ -91,6 +97,8 @@ public class TrackHandler : MonoBehaviour
         }
 
         removeOldNotes();
+
+        checkIfChartIsOver();
 
     }
 
@@ -125,10 +133,10 @@ public class TrackHandler : MonoBehaviour
 
                     if (noteDead)
                     {
-                            Notes.Remove(upcomingNote);
-                            upcomingNote.destroyThisNote();
+                        Notes.Remove(upcomingNote);
+                        upcomingNote.destroyThisNote();
                     }
-                    
+
                 }
             }
             else
@@ -147,7 +155,7 @@ public class TrackHandler : MonoBehaviour
                     }
                 }
             }
-            
+
             /* else if (msDiff <= 125f)
             {
                 Debug.Log("bad!");
@@ -222,5 +230,25 @@ public class TrackHandler : MonoBehaviour
                 }
             }
         }
+    }
+
+    void checkIfChartIsOver()
+    {
+        if (!chartIsOver)
+        {
+            if (Notes.Count <= 0 && noteSpawns.Count <= 0)
+            {
+                chartIsOver = true;
+                Debug.Log("chart's done!");
+                StartCoroutine(delayUntilSongEnd(2));
+            }
+        }
+
+    }
+
+    IEnumerator delayUntilSongEnd(int time)
+    {
+        yield return new WaitForSeconds(time);
+        onSongEnd?.Invoke();
     }
 }

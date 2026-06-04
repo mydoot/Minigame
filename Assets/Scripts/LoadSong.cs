@@ -21,5 +21,6 @@ public class LoadSong : MonoBehaviour
     public void loadSongInConductor()
     {
         SongTransition.nextSongToLoad = song;
+        SceneManagerMini.Instance.LoadGameScene();
     }
 }
