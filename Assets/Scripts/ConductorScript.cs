@@ -59,6 +59,13 @@ public class ConductorScript : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
 
+     public delegate void OnBeat();
+
+    public static OnBeat onTheBeat;
+
+    private float nextBeat;
+
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -99,6 +106,12 @@ public class ConductorScript : MonoBehaviour
 
             //determine how many beats since the song started
             songPositionInBeats = songPosition / secPerBeat;
+
+            if (songPosition >= nextBeat)
+            {
+                onTheBeat?.Invoke();
+                nextBeat += secPerBeat;
+            }
         }
     }
 
@@ -137,6 +150,8 @@ public class ConductorScript : MonoBehaviour
         //Calculate the number of seconds in each beat
         // duration of a quarter note
         secPerBeat = 60f / songBpm;
+
+        nextBeat = secPerBeat;
 
         //StartCoroutine(waitForStart(0));
 

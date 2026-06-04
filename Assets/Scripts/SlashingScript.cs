@@ -1,5 +1,9 @@
 using UnityEngine;
 using UnityEngine.TextCore.Text;
+using DG.Tweening;
+using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
+using Unity.UI;
 
 public class SlashCombo : MonoBehaviour
 {
@@ -10,6 +14,16 @@ public class SlashCombo : MonoBehaviour
     public float comboResetTime = 0.5f;
 
     [SerializeField] private CharacterSounds charSounds;
+
+    [SerializeField] private RectTransform characterTransform;
+
+    private Tween bounceTween;
+
+
+    void Start()
+    {
+        ConductorScript.onTheBeat += bounceCharacter;
+    }
 
     void Update()
     {
@@ -43,5 +57,16 @@ public class SlashCombo : MonoBehaviour
                 clickCount = 0;
             }
         }
+    }
+
+    void bounceCharacter()
+    {
+        if (bounceTween != null && bounceTween.IsActive())
+        {
+            bounceTween.Kill();
+            characterTransform.localScale = Vector2.one;
+        }
+
+        characterTransform.DOPunchScale(new Vector3(0.3f, 0.3f, 0), 0.1f,0,0);
     }
 }
