@@ -299,7 +299,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c67114ffb7e38d4295f3b39b9821cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Song: {fileID: 11400000, guid: 4882e80cc5b820143b3d39cd83b001bd, type: 2}
+  Song: {fileID: 11400000, guid: c8285b817a6dc0f45a0e1c54e91c30ae, type: 2}
   songBpm: 0
   secPerBeat: 0
   songPosition: 0
@@ -307,7 +307,7 @@ MonoBehaviour:
   songPositionInBeats: 0
   dspSongTime: 0
   delay: 3
-  globalOffset: 0
+  globalOffset: 100
   songHasStarted: 0
   musicSource: {fileID: 346292320}
 --- !u!4 &346292322
@@ -1050,6 +1050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlashCombo
   animator: {fileID: 761773878}
   comboResetTime: 0.5
+  charSounds: {fileID: 761773882}
 --- !u!95 &761773878
 Animator:
   serializedVersion: 7

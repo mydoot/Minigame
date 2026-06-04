@@ -17,14 +17,14 @@ public class CharacterSounds : MonoBehaviour
 
     public void playHitSound()
     {
-        audioSource.pitch = Random.Range(0.85f, 1.15f);
+        audioSource.pitch = Random.Range(0.85f, 1.10f);
 
-        audioSource.PlayOneShot(hitSound, 0.75f);
+        audioSource.PlayOneShot(hitSound, 0.30f);
     }
     public void playWhiffSound()
     {
         audioSource.pitch = Random.Range(1.15f, 1.35f);
 
-        audioSource.PlayOneShot(whiffSound, 0.60f);
+        audioSource.PlayOneShot(whiffSound, 0.25f);
     }
 }

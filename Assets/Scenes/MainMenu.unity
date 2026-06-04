@@ -1955,7 +1955,7 @@ MonoBehaviour:
   songPositionInBeats: 0
   dspSongTime: 0
   delay: 3
-  globalOffset: 0
+  globalOffset: 150
   songHasStarted: 0
   musicSource: {fileID: 1168583351}
 --- !u!4 &1168583353

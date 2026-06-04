@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
 
 public class SlashCombo : MonoBehaviour
 {
@@ -8,12 +9,15 @@ public class SlashCombo : MonoBehaviour
     private float comboTimer = 0f;
     public float comboResetTime = 0.5f;
 
+    [SerializeField] private CharacterSounds charSounds;
+
     void Update()
     {
         if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
+            charSounds.playWhiffSound();
 
             if (clickCount == 1)
             {
