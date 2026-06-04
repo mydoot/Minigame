@@ -9,7 +9,6 @@ using System.IO;
 
 public class TrackHandler : MonoBehaviour
 {
-    public static TrackHandler Instance { get; private set; }
 
     [Header("Note Types")]
     // PRIVATE VARIABLES
@@ -52,12 +51,12 @@ public class TrackHandler : MonoBehaviour
 
     void Awake()
     {
-        if (Instance != null && Instance != this)
+        /* if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        Instance = this;
+        Instance = this; */
     }
 
     void Start()
@@ -212,6 +211,8 @@ public class TrackHandler : MonoBehaviour
                     NoteScript Note = Instantiate(obj, spawnPoint.position, Quaternion.identity);
                     Note.targetBeat = nextTargetBeat;
                     Notes.Add(Note);
+
+                    Note.init(this, spawnPoint, hitPoint);
 
                     noteSpawns.Dequeue();
                 }
