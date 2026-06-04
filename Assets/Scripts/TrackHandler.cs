@@ -138,6 +138,7 @@ public class TrackHandler : MonoBehaviour
                     if (noteDead)
                     {
                         Notes.Remove(upcomingNote);
+                        ParticleManager.Instance.playDestroyParticle();
                         upcomingNote.destroyThisNote();
                     }
 
@@ -156,6 +157,7 @@ public class TrackHandler : MonoBehaviour
                     if (noteDead)
                     {
                         Notes.Remove(upcomingNote);
+                        ParticleManager.Instance.playDestroyParticle();
                         upcomingNote.destroyThisNote();
                     }
                 }
