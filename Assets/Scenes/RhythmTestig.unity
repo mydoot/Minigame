@@ -151,10 +151,10 @@ MonoBehaviour:
   note: {fileID: 3070916930067278322, guid: 0f9e2a8b0f596f542ae2d70f066b90ee, type: 3}
   ghostNote: {fileID: 2068881631369065918, guid: 1074e445bb5d84c4db9cf1aa2d019041, type: 3}
   capsuleNote: {fileID: 8978350118036394927, guid: 8ffc104fbd115854f84cbf1f21f7ec79, type: 3}
-  debugText: {fileID: 1032861851}
   hitPoint: {fileID: 2141785240}
   spawnPoint: {fileID: 358107969}
   Notes: []
+  debugText: {fileID: 1032861851}
 --- !u!4 &42339178
 Transform:
   m_ObjectHideFlags: 0
@@ -297,16 +297,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c67114ffb7e38d4295f3b39b9821cf8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  Song: {fileID: 11400000, guid: c8285b817a6dc0f45a0e1c54e91c30ae, type: 2}
+  Song: {fileID: 0}
   songBpm: 0
   secPerBeat: 0
   songPosition: 0
+  absoluteSongPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
   delay: 3
-  songOffset: 20
-  musicSource: {fileID: 346292320}
+  globalOffset: 0
   songHasStarted: 0
+  musicSource: {fileID: 346292320}
 --- !u!4 &346292322
 Transform:
   m_ObjectHideFlags: 0

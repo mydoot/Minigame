@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class LoadSong : MonoBehaviour
 {
-
+    //fix
     [SerializeField] public SongObject song;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -18,12 +18,8 @@ public class LoadSong : MonoBehaviour
 
     }
 
-    void loadSongInConductor()
+    public void loadSongInConductor()
     {
-        if (ConductorScript.Instance)
-        {
-            ConductorScript.Instance.Song = song;
-            ConductorScript.Instance.loadCurrentSong();
-        }
+        SongTransition.nextSongToLoad = song;
     }
 }

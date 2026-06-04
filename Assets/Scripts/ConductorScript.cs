@@ -66,15 +66,17 @@ public class ConductorScript : MonoBehaviour
             return;
         }
         Instance = this;
+
+        if (SongTransition.nextSongToLoad)
+        {
+            Song = SongTransition.nextSongToLoad;
+            SongTransition.nextSongToLoad = null;
+        }
     }
 
     void Start()
     {
         loadCurrentSong();
-        if (songBpm == Song.BPM)
-        {
-            beginSong();
-        }
     }
 
     // Update is called once per frame
@@ -112,6 +114,12 @@ public class ConductorScript : MonoBehaviour
 
     public void loadCurrentSong()
     {
+        if (!Song)
+        {
+            Debug.LogWarning("Warning: No song loaded in conductor. Ignore this message if you are in the MainMenu scene.");
+            return; 
+        }
+
         songHasStarted = false;
 
         //loading SongObject data
@@ -123,6 +131,8 @@ public class ConductorScript : MonoBehaviour
         secPerBeat = 60f / songBpm;
 
         //StartCoroutine(waitForStart(0));
+
+        beginSong();
     }
 
 
