@@ -149,6 +149,7 @@ public class TrackHandler : MonoBehaviour
                 {
                     Debug.Log("hit!");
                     onNoteHit?.Invoke();
+                    hitCount++;
 
                     bool noteDead = upcomingNote.takeDamage();
 

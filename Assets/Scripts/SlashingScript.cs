@@ -10,7 +10,7 @@ public class SlashCombo : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
