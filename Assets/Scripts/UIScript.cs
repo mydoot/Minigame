@@ -5,9 +5,10 @@ using DG.Tweening;
 public class UIScript : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI comboUI;
-    [SerializeField] private TextMeshProUGUI judgementUI;
+    [SerializeField] private judgementScript judgementUI;
     [SerializeField] private TextMeshProUGUI realComboUI;
     [SerializeField] private TextMeshProUGUI debuggingUI;
+    [SerializeField] private Transform judgementSpawnPos;
 
 
     public delegate void DiffDebug(float num);
@@ -16,7 +17,7 @@ public class UIScript : MonoBehaviour
     private float diff;
     public int combo;
 
-    private bool debugMode = false;
+    private bool debugMode = true;
 
     private Tween punchTween;
 
@@ -30,7 +31,7 @@ public class UIScript : MonoBehaviour
         TrackHandler.onNoteHit += increaseCombo;
         TrackHandler.onNoteMissed += decreaseCombo;
 
-        judgementUI.text = "nothing so far";
+       
     }
 
     // Update is called once per frame
@@ -39,9 +40,8 @@ public class UIScript : MonoBehaviour
         comboUI.text = $"Combo: {combo} | Note Diff (in ms): {diff:F2}";
         realComboUI.text = $"x{combo}";
 
-        if (UnityEngine.InputSystem.Keyboard.current.lKey.wasPressedThisFrame)
+        if (UnityEngine.InputSystem.Keyboard.current.pKey.wasPressedThisFrame)
         {
-
             if (!debugMode)
             {
                 showDebuggers();
@@ -56,14 +56,14 @@ public class UIScript : MonoBehaviour
     void increaseCombo()
     {
         combo++;
-        judgementUI.text = "HIT!";
+        popUpJudgement("HIT!");
         if (punchTween != null && punchTween.IsActive())
         {
             punchTween.Kill();
             realComboUI.transform.localScale = Vector3.one;
         }
 
-        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.1f, 0.1f, 0), 0.25f,0,0.1f);
+        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.25f, 0.25f, 0), 0.3f,0,0.5f);
     }
 
     void decreaseCombo()
@@ -72,7 +72,7 @@ public class UIScript : MonoBehaviour
         {
             combo = 0;
         }
-        judgementUI.text = "MISS!";
+        popUpJudgement("MISS!");
     }
 
     void handleDiff(float num)
@@ -82,13 +82,21 @@ public class UIScript : MonoBehaviour
 
     void hideDebuggers()
     {
+        debugMode = false;
         comboUI.gameObject.SetActive(false);
         debuggingUI.gameObject.SetActive(false);
     }
     void showDebuggers()
     {
+        debugMode = true;
         comboUI.gameObject.SetActive(true);
         debuggingUI.gameObject.SetActive(true);
     }
 
+
+    void popUpJudgement(string text)
+    {
+        judgementScript judge = Instantiate(judgementUI, judgementSpawnPos, false);
+        judge.changeText(text);
+    }
 }

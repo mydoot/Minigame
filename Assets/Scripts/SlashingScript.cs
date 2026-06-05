@@ -61,12 +61,15 @@ public class SlashCombo : MonoBehaviour
 
     void bounceCharacter()
     {
-        if (bounceTween != null && bounceTween.IsActive())
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
         {
-            bounceTween.Kill();
-            characterTransform.localScale = Vector2.one;
-        }
+            if (bounceTween != null && bounceTween.IsActive())
+            {
+                bounceTween.Kill();
+                characterTransform.localScale = Vector2.one;
+            }
 
-        characterTransform.DOPunchScale(new Vector3(0.3f, 0.3f, 0), 0.1f,0,0);
+            characterTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.1f, 0, 0.15f);
+        }
     }
 }
