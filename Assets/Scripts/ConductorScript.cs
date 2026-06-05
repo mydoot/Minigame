@@ -170,10 +170,16 @@ public class ConductorScript : MonoBehaviour
         });
     }
 
-    public void adjustGlobalOffset(int offset)
+    public void adjustGlobalOffset(string offset)
     {
-        globalOffset = offset;
-        SessionData.globalOffsetInMS = offset;
+        if (int.TryParse(offset, out int val))
+        {
+        globalOffset = val;
+        SessionData.globalOffsetInMS = val;    
+        } else
+        {
+            Debug.LogWarning("Offset must be an integer");
+        }
         Debug.Log($"global offset is {globalOffset}");
     }
 

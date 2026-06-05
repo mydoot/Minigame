@@ -20,7 +20,7 @@ public class LoadSong : MonoBehaviour
 
     public void loadSongInConductor()
     {
-        SongTransition.nextSongToLoad = song;
+        SessionData.nextSongToLoad = song;
         SceneManagerMini.Instance.LoadGameScene();
     }
 }
