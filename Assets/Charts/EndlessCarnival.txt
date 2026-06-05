@@ -168,7 +168,7 @@
 
 | SECTION 5
 128, Note
-129, Note
+129, GhostNote
 130.5, Note
 131, GhostNote
 132, Note
@@ -179,7 +179,7 @@
 135, GhostNote
 
 136, Note
-137 , Note
+137 , GhostNote
 138.5, Note
 139, GhostNote
 140, Note
@@ -190,7 +190,7 @@
 143, GhostNote
 
 144, Note
-145 , Note
+145 , GhostNote
 146.5, Note
 147, GhostNote
 148, Note
@@ -201,7 +201,7 @@
 151, GhostNote
 
 152, Note
-153 , Note
+153 , GhostNote
 154.5, Note
 155, GhostNote
 156, Note
@@ -212,7 +212,7 @@
 159, GhostNote
 
 160, Note
-161 , Note
+161 , GhostNote
 162.5, Note
 163, GhostNote
 164, Note
@@ -223,7 +223,7 @@
 167, GhostNote
 
 168, Note
-169 , Note
+169 , GhostNote
 170.5, Note
 171, GhostNote
 172, Note
@@ -234,12 +234,59 @@
 175, GhostNote
 
 176, Note
-177 , Note
+177 , GhostNote
 178.5, Note
 179, GhostNote
 180, Note
 180.5, Note
 181, GhostNote
+
+182.5, Note
+183, GhostNote
+
+184, Note
+185 , GhostNote
+186.5, Note
+187, GhostNote
+188, Note
+188.5, Note
+189, GhostNote
+
+190.5, Note
+191, GhostNote
+
+192, Note
+193 , GhostNote
+194.5, Note
+195, GhostNote
+196, Note
+196.5, Note
+197, GhostNote
+
+198.5, Note
+199, GhostNote
+
+200, Note
+201 , GhostNote
+202.5, Note
+203, GhostNote
+204, Note
+204.5, Note
+205, GhostNote
+
+206.5, Note
+207, GhostNote
+
+208, Note
+209, Note
+209, Note
+210, GhostNote
+211, GhostNote
+212, GhostNote
+214, TriangleNote
+216, TriangleNote
+218, TriangleNote
+
 
 
 
