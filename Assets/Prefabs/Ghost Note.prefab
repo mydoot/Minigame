@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
-  m_Color: {r: 0.8490566, g: 0.44731376, b: 0.08810955, a: 1}
+  m_Color: {r: 1, g: 0.69173265, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GhostNoteScript
   targetBeat: 0
-  pointValue: 2
+  pointValue: 1
   healthValue: 1
   removeThreshold: 1.05
   transparencySpeed: 1.4

@@ -35,6 +35,12 @@ public class UIScript : MonoBehaviour
        
     }
 
+     void OnDisable()
+    {
+        TrackHandler.onNoteHit -= increaseCombo;
+        TrackHandler.onNoteMissed -= decreaseCombo;
+    }
+
     // Update is called once per frame
     void Update()
     {

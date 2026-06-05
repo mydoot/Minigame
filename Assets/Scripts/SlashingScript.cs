@@ -25,9 +25,14 @@ public class SlashCombo : MonoBehaviour
         ConductorScript.onTheBeat += bounceCharacter;
     }
 
+    void OnDisable()
+    {
+        ConductorScript.onTheBeat -= bounceCharacter;
+    }
+
     void Update()
     {
-        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
+        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
@@ -61,15 +66,18 @@ public class SlashCombo : MonoBehaviour
 
     void bounceCharacter()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+        if (animator != null)
         {
-            if (bounceTween != null && bounceTween.IsActive())
+            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
             {
-                bounceTween.Kill();
-                characterTransform.localScale = Vector2.one;
-            }
+                if (bounceTween != null && bounceTween.IsActive())
+                {
+                    bounceTween.Kill();
+                    characterTransform.localScale = Vector2.one;
+                }
 
-            characterTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.1f, 0, 0.15f);
+                characterTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.1f, 0, 0.15f);
+            }
         }
     }
 }
