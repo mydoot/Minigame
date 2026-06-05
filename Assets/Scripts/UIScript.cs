@@ -9,6 +9,7 @@ public class UIScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI realComboUI;
     [SerializeField] private TextMeshProUGUI debuggingUI;
     [SerializeField] private Transform judgementSpawnPos;
+    [SerializeField] private TextMeshProUGUI songNameUI;
 
 
     public delegate void DiffDebug(float num);
@@ -39,6 +40,7 @@ public class UIScript : MonoBehaviour
     {
         comboUI.text = $"Combo: {combo} | Note Diff (in ms): {diff:F2}";
         realComboUI.text = $"x{combo}";
+        songNameUI.text = $"Song ♪: {ConductorScript.Instance.Song.name}";
 
         if (UnityEngine.InputSystem.Keyboard.current.pKey.wasPressedThisFrame)
         {
@@ -63,7 +65,7 @@ public class UIScript : MonoBehaviour
             realComboUI.transform.localScale = Vector3.one;
         }
 
-        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.25f, 0.25f, 0), 0.3f,0,0.5f);
+        punchTween = realComboUI.transform.DOPunchScale(new Vector3(0.25f, 0.25f, 0), 0.1f,0,0.5f);
     }
 
     void decreaseCombo()
@@ -98,5 +100,6 @@ public class UIScript : MonoBehaviour
     {
         judgementScript judge = Instantiate(judgementUI, judgementSpawnPos, false);
         judge.changeText(text);
+        judge.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
     }
 }
