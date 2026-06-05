@@ -168,7 +168,11 @@ public class ConductorScript : MonoBehaviour
         });
     }
 
-
+    public void adjustGlobalOffset(int offset)
+    {
+        globalOffset = offset;
+        Debug.Log($"global offset is {globalOffset}");
+    }
 
 
 }
