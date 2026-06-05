@@ -32,7 +32,7 @@ public class SlashCombo : MonoBehaviour
 
     void Update()
     {
-        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
+        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
