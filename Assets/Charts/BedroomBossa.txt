@@ -42,7 +42,7 @@
 88, GhostNote
 90, GhostNote
 92, GhostNote
-94, CapsuleNote
+94, TriangleNote
 | SECTION 4
 96, Note
 96.5, Note
