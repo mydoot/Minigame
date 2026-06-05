@@ -16,10 +16,23 @@ public class NoteScript : MonoBehaviour
 
     protected float threshold;
 
+    private Transform spawnPoint;
+
+    private Transform hitPoint;
+
+    private TrackHandler handler;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
+    }
+
+    public void init(TrackHandler trackHandler, Transform spawn, Transform hit)
+    {
+        handler = trackHandler;
+        spawnPoint = spawn;
+        hitPoint = hit;
     }
 
     // Update is called once per frame
@@ -38,15 +51,15 @@ public class NoteScript : MonoBehaviour
         threshold = (TrackHandler.shownBeats - (targetBeat - fakeCurrentBeat)) / TrackHandler.shownBeats; //used for interpolation
 
         transform.position = Vector2.LerpUnclamped(
-        TrackHandler.Instance.spawnPoint.position,
-        TrackHandler.Instance.hitPoint.position,
+        spawnPoint.position,
+        hitPoint.position,
         threshold
     );
 
         // if the note moves past the hit point by the remove threshold, remove it and invoke all functions subscribes to onNoteMissed
         if (threshold > removeThreshold)
         {   
-            TrackHandler.Instance.handleNoteMissed(this);     
+            handler.handleNoteMissed(this);     
             destroyThisNote();
         }
     }

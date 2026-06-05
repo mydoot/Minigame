@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SongObject
   trackData: {fileID: 8300000, guid: 3101c38dc4fc53c40997261b2a137657, type: 3}
   txtChartData: {fileID: 4900000, guid: 4aa3ab66b8b091748bb72f9e4dc63efb, type: 3}
-  trackName: Jumper (from GD)
+  trackName: 'Jumper '
   BPM: 178
   songOffset: 0.703
   chart:
@@ -34,13 +34,153 @@ MonoBehaviour:
     type: 0
   - targetBeat: 32
     type: 0
+  - targetBeat: 33
+    type: 2
   - targetBeat: 34
+    type: 2
+  - targetBeat: 35
     type: 2
   - targetBeat: 36
     type: 2
+  - targetBeat: 37
+    type: 2
   - targetBeat: 38
+    type: 2
+  - targetBeat: 39
     type: 2
   - targetBeat: 40
     type: 2
+  - targetBeat: 41
+    type: 2
   - targetBeat: 42
+    type: 2
+  - targetBeat: 43
+    type: 2
+  - targetBeat: 44
+    type: 2
+  - targetBeat: 45
+    type: 2
+  - targetBeat: 46
+    type: 2
+  - targetBeat: 47
+    type: 2
+  - targetBeat: 48
+    type: 2
+  - targetBeat: 49
+    type: 2
+  - targetBeat: 50
+    type: 2
+  - targetBeat: 51
+    type: 2
+  - targetBeat: 52
+    type: 2
+  - targetBeat: 53
+    type: 2
+  - targetBeat: 54
+    type: 2
+  - targetBeat: 55
+    type: 2
+  - targetBeat: 56
+    type: 2
+  - targetBeat: 57
+    type: 2
+  - targetBeat: 58
+    type: 2
+  - targetBeat: 59
+    type: 2
+  - targetBeat: 60
+    type: 2
+  - targetBeat: 61
+    type: 2
+  - targetBeat: 62
+    type: 2
+  - targetBeat: 63
+    type: 2
+  - targetBeat: 64
+    type: 0
+  - targetBeat: 65
+    type: 0
+  - targetBeat: 66
+    type: 0
+  - targetBeat: 67
+    type: 2
+  - targetBeat: 68
+    type: 0
+  - targetBeat: 69
+    type: 0
+  - targetBeat: 70
+    type: 0
+  - targetBeat: 71
+    type: 2
+  - targetBeat: 72
+    type: 0
+  - targetBeat: 73
+    type: 0
+  - targetBeat: 74
+    type: 0
+  - targetBeat: 75
+    type: 2
+  - targetBeat: 76
+    type: 0
+  - targetBeat: 77
+    type: 0
+  - targetBeat: 78
+    type: 0
+  - targetBeat: 79
+    type: 2
+  - targetBeat: 80
+    type: 0
+  - targetBeat: 81
+    type: 0
+  - targetBeat: 82
+    type: 0
+  - targetBeat: 83
+    type: 2
+  - targetBeat: 84
+    type: 0
+  - targetBeat: 85
+    type: 0
+  - targetBeat: 86
+    type: 0
+  - targetBeat: 87
+    type: 2
+  - targetBeat: 88
+    type: 0
+  - targetBeat: 89
+    type: 0
+  - targetBeat: 90
+    type: 0
+  - targetBeat: 91
+    type: 2
+  - targetBeat: 92
+    type: 0
+  - targetBeat: 93
+    type: 0
+  - targetBeat: 94
+    type: 0
+  - targetBeat: 95
+    type: 2
+  - targetBeat: 96
+    type: 0
+  - targetBeat: 97
+    type: 0
+  - targetBeat: 98
+    type: 0
+  - targetBeat: 99
+    type: 2
+  - targetBeat: 100
+    type: 0
+  - targetBeat: 101
+    type: 0
+  - targetBeat: 102
+    type: 0
+  - targetBeat: 103
+    type: 2
+  - targetBeat: 104
+    type: 0
+  - targetBeat: 105
+    type: 0
+  - targetBeat: 106
+    type: 0
+  - targetBeat: 107
     type: 2

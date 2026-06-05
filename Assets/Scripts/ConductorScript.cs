@@ -5,18 +5,20 @@ using UnityEngine.Events;
 using System.Collections;
 using System.IO;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
+using DG.Tweening;
 
 public enum noteType
 {
     Note,
     GhostNote,
-    CapsuleNote, 
+    CapsuleNote,
     TriangleNote
 }
 
 public class ConductorScript : MonoBehaviour
 {
-    public static ConductorScript Instance { get; private set; } 
+    public static ConductorScript Instance { get; private set; }
 
     [Header("Song ScriptableObject")]
     [SerializeField] public SongObject Song;
@@ -34,7 +36,7 @@ public class ConductorScript : MonoBehaviour
     [Tooltip("current song position in seconds, adjusted for possible song offsets")]
     public float songPosition;
 
-     [Tooltip("current song positio in seconds ignoring possible song offsets")]
+    [Tooltip("current song positio in seconds ignoring possible song offsets")]
     public double absoluteSongPosition;
 
     //Current song position, in beats
@@ -51,11 +53,19 @@ public class ConductorScript : MonoBehaviour
 
     [Tooltip("Global offset in milliseconds. Used for better game feel")]
     public float globalOffset;
-    
+
     public bool songHasStarted = false;
 
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
+
+     public delegate void OnBeat();
+
+    public static OnBeat onTheBeat;
+
+    private float nextBeat;
+
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -63,24 +73,27 @@ public class ConductorScript : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        Instance = this;    
+        Instance = this;
+
+        if (SessionData.nextSongToLoad)
+        {
+            Song = SessionData.nextSongToLoad;
+            SessionData.nextSongToLoad = null;
+        }
+
+        globalOffset = SessionData.globalOffsetInMS;
     }
-    
+
     void Start()
     {
-        songHasStarted = false;
+        TrackHandler.onSongEnd += EndSong;
+        
+        loadCurrentSong();
+    }
 
-        //loading SongObject data
-        musicSource.clip = Song.trackData;
-        songBpm = Song.BPM;
-
-        //Calculate the number of seconds in each beat
-        // duration of a quarter note
-        secPerBeat = 60f / songBpm;
-
-        //StartCoroutine(waitForStart(0));
-
-        beginSong();
+    void OnDestroy()
+    {
+        TrackHandler.onSongEnd -= EndSong;
     }
 
     // Update is called once per frame
@@ -95,11 +108,17 @@ public class ConductorScript : MonoBehaviour
 
             //determine how many beats since the song started
             songPositionInBeats = songPosition / secPerBeat;
+
+            if (songPosition >= nextBeat)
+            {
+                onTheBeat?.Invoke();
+                nextBeat += secPerBeat;
+            }
         }
     }
 
-    void beginSong()
-    {   
+    public void beginSong()
+    {
         if (Song.songOffset > 0)
         {
             Debug.Log($"adjusted individual song offset due to delayed start by {Song.songOffset}");
@@ -112,11 +131,57 @@ public class ConductorScript : MonoBehaviour
 
         //Start the music
         musicSource.PlayScheduled(dspSongTime);
-        
+
         songHasStarted = true;
     }
 
-   
+    public void loadCurrentSong()
+    {
+        if (!Song)
+        {
+            Debug.LogWarning("Warning: No song loaded in conductor. Ignore this message if you are in the MainMenu scene.");
+            return; 
+        }
 
-    
+        songHasStarted = false;
+
+        //loading SongObject data
+        musicSource.clip = Song.trackData;
+        songBpm = Song.BPM;
+
+        //Calculate the number of seconds in each beat
+        // duration of a quarter note
+        secPerBeat = 60f / songBpm;
+
+        nextBeat = secPerBeat;
+
+        //StartCoroutine(waitForStart(0));
+
+        beginSong();
+    }
+
+    private void EndSong()
+    {
+        Debug.Log("ending song, returning to main menu (or showing results screen)");
+        musicSource.DOFade(0f, 5f).OnComplete(()=>{
+            //show results, etc
+
+            SceneManagerMini.Instance.LoadMainMenu();
+        });
+    }
+
+    public void adjustGlobalOffset(string offset)
+    {
+        if (int.TryParse(offset, out int val))
+        {
+        globalOffset = val;
+        SessionData.globalOffsetInMS = val;    
+        } else
+        {
+            Debug.LogWarning("Offset must be an integer");
+        }
+        Debug.Log($"global offset is {globalOffset}");
+    }
+
+
 }

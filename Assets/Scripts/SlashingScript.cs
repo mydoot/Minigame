@@ -1,4 +1,9 @@
 using UnityEngine;
+using UnityEngine.TextCore.Text;
+using DG.Tweening;
+using Microsoft.Unity.VisualStudio.Editor;
+using Unity.VisualScripting;
+using Unity.UI;
 
 public class SlashCombo : MonoBehaviour
 {
@@ -8,12 +13,25 @@ public class SlashCombo : MonoBehaviour
     private float comboTimer = 0f;
     public float comboResetTime = 0.5f;
 
+    [SerializeField] private CharacterSounds charSounds;
+
+    [SerializeField] private RectTransform characterTransform;
+
+    private Tween bounceTween;
+
+
+    void Start()
+    {
+        ConductorScript.onTheBeat += bounceCharacter;
+    }
+
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
+            charSounds.playWhiffSound();
 
             if (clickCount == 1)
             {
@@ -38,6 +56,20 @@ public class SlashCombo : MonoBehaviour
             {
                 clickCount = 0;
             }
+        }
+    }
+
+    void bounceCharacter()
+    {
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Default"))
+        {
+            if (bounceTween != null && bounceTween.IsActive())
+            {
+                bounceTween.Kill();
+                characterTransform.localScale = Vector2.one;
+            }
+
+            characterTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.1f, 0, 0.15f);
         }
     }
 }
