@@ -75,11 +75,13 @@ public class ConductorScript : MonoBehaviour
         }
         Instance = this;
 
-        if (SongTransition.nextSongToLoad)
+        if (SessionData.nextSongToLoad)
         {
-            Song = SongTransition.nextSongToLoad;
-            SongTransition.nextSongToLoad = null;
+            Song = SessionData.nextSongToLoad;
+            SessionData.nextSongToLoad = null;
         }
+
+        globalOffset = SessionData.globalOffsetInMS;
     }
 
     void Start()
@@ -171,6 +173,7 @@ public class ConductorScript : MonoBehaviour
     public void adjustGlobalOffset(int offset)
     {
         globalOffset = offset;
+        SessionData.globalOffsetInMS = offset;
         Debug.Log($"global offset is {globalOffset}");
     }
 
