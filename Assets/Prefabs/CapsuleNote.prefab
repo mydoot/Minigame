@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CapsuleNoteScript
   targetBeat: 0
-  pointValue: 3
+  pointValue: 2
   healthValue: 2
   removeThreshold: 1.05
   rotationSpeed: 1.33

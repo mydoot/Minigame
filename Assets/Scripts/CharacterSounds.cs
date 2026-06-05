@@ -15,6 +15,11 @@ public class CharacterSounds : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    void OnDisable()
+    {
+         TrackHandler.onNoteHit -= playHitSound;
+    }
+
     public void playHitSound()
     {
         audioSource.pitch = Random.Range(0.85f, 1.10f);

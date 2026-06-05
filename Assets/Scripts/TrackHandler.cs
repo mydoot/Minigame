@@ -16,6 +16,7 @@ public class TrackHandler : MonoBehaviour
     [SerializeField] private NoteScript note;
     [SerializeField] private GhostNoteScript ghostNote;
     [SerializeField] private CapsuleNoteScript capsuleNote;
+    [SerializeField] private TriangleNoteScript triangleNote;
 
     [Header("Hit Point and Spawn Point Objects")]
     [SerializeField] public Transform hitPoint;
@@ -49,6 +50,8 @@ public class TrackHandler : MonoBehaviour
 
     public static OnSongEnd onSongEnd;
 
+    
+
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI debugText;
 
@@ -77,6 +80,7 @@ public class TrackHandler : MonoBehaviour
         noteDictionary.Add(noteType.Note, note);
         noteDictionary.Add(noteType.GhostNote, ghostNote);
         noteDictionary.Add(noteType.CapsuleNote, capsuleNote);
+        noteDictionary.Add(noteType.TriangleNote, triangleNote);
     }
 
 
