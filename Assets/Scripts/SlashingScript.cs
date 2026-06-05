@@ -4,13 +4,14 @@ using DG.Tweening;
 using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using Unity.UI;
+using UnityEngine.InputSystem;
 
 public class SlashCombo : MonoBehaviour
 {
     public Animator animator;
 
-    private int clickCount = 0;
-    private float comboTimer = 0f;
+    public int clickCount = 0;
+    public float comboTimer = 0f;
     public float comboResetTime = 0.5f;
 
     [SerializeField] private CharacterSounds charSounds;
@@ -32,7 +33,7 @@ public class SlashCombo : MonoBehaviour
 
     void Update()
     {
-        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
+        /* if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             clickCount++;
             comboTimer = comboResetTime;
@@ -52,6 +53,7 @@ public class SlashCombo : MonoBehaviour
                 clickCount = 0;
             }
         }
+ */
 
         if (clickCount > 0)
         {
@@ -62,6 +64,8 @@ public class SlashCombo : MonoBehaviour
                 clickCount = 0;
             }
         }
+
+
     }
 
     void bounceCharacter()
@@ -79,5 +83,32 @@ public class SlashCombo : MonoBehaviour
                 characterTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0), 0.1f, 0, 0.15f);
             }
         }
+    }
+
+    public void HitNote(InputAction.CallbackContext context)
+    {
+        if (context.started)
+        {
+            clickCount++;
+            charSounds.playWhiffSound();
+            comboTimer = comboResetTime;
+
+
+            if (clickCount == 1)
+            {
+                animator.Play("Slash1", 0, 0f);
+            }
+            else if (clickCount == 2)
+            {
+                animator.Play("Slash2", 0, 0f);
+            }
+            else if (clickCount >= 3)
+            {
+                animator.Play("Slash3", 0, 0f);
+                clickCount = 0;
+            }
+        }
+
+
     }
 }
