@@ -40,7 +40,7 @@ public class UIScript : MonoBehaviour
     {
         comboUI.text = $"Combo: {combo} | Note Diff (in ms): {diff:F2}";
         realComboUI.text = $"x{combo}";
-        songNameUI.text = $"Song ♪: {ConductorScript.Instance.Song.name}";
+        songNameUI.text = $"Song ♪: {ConductorScript.Instance.Song.trackName}";
 
         if (UnityEngine.InputSystem.Keyboard.current.pKey.wasPressedThisFrame)
         {
