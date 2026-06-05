@@ -184,7 +184,6 @@ public class TrackHandler : MonoBehaviour
             Debug.Log("miss!");
             missedCount++;
             Notes.Remove(note);
-            onNoteMissed?.Invoke();
 
             //additionally add logic for reducing the PLAYER health
         }

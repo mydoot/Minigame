@@ -65,6 +65,8 @@ public class ConductorScript : MonoBehaviour
 
     private float nextBeat;
 
+    [SerializeField] private ResultsManager resultsManager;
+    [SerializeField] private TrackHandler trackHandler;
 
     void Awake()
     {
@@ -163,10 +165,9 @@ public class ConductorScript : MonoBehaviour
     private void EndSong()
     {
         Debug.Log("ending song, returning to main menu (or showing results screen)");
-        musicSource.DOFade(0f, 5f).OnComplete(()=>{
-            //show results, etc
-
-            SceneManagerMini.Instance.LoadMainMenu();
+        musicSource.DOFade(0f, 5f).OnComplete(() =>
+        {
+        resultsManager.ShowResults();
         });
     }
 
