@@ -5537,8 +5537,8 @@ MonoBehaviour:
   globalOffset: 100
   songHasStarted: 0
   musicSource: {fileID: 346292320}
-  resultsManager: {fileID: 1287024492}
-  playerInput: {fileID: 761773883}
+  resultsManager: {fileID: 0}
+  trackHandler: {fileID: 0}
 --- !u!4 &346292322
 Transform:
   m_ObjectHideFlags: 0
@@ -6041,8 +6041,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.5, y: 4.1936035}
-  m_SizeDelta: {x: 5, y: 8.3872}
+  m_AnchoredPosition: {x: 2.5, y: 0}
+  m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &565559154
 MonoBehaviour:
@@ -7157,22 +7157,6 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 2da5637b-16c1-42cb-86af-202cdc08587a
     m_ActionName: UI/TrackedDeviceOrientation
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1287024492}
-        m_TargetAssemblyTypeName: ResultsManager, Assembly-CSharp
-        m_MethodName: onContinue
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 2e9cfe52-dc44-4a1f-9875-a9f6d852096f
-    m_ActionName: UI/Continue
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -8902,7 +8886,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
   looping: 1
-  prewarm: 0
+  prewarm: 1
   playOnAwake: 1
   useUnscaledTime: 0
   autoRandomSeed: 1

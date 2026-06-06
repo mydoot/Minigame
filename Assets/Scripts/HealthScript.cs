@@ -15,7 +15,7 @@ public class HealthScript : MonoBehaviour
 
     [SerializeField] private Slider healthSlider;
 
-    [SerializeField] private int Health = 10;
+    [SerializeField] public static int Health = 10;
 
     [SerializeField] private PlayerInput playerInput;
 
@@ -29,7 +29,7 @@ public class HealthScript : MonoBehaviour
 
     void OnDisable()
     {
-
+        Health = 10;
         TrackHandler.onTakeDamage -= takeDamage;
     }
 
@@ -53,7 +53,7 @@ public class HealthScript : MonoBehaviour
         if (Health <= 0)
         {
             TrackHandler.onSongEnd?.Invoke();
-            playerInput.DeactivateInput();
+            playerInput.actions.FindActionMap("Player").Disable();
         }
     }
 }

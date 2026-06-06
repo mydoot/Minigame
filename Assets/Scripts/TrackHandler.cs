@@ -56,6 +56,8 @@ public class TrackHandler : MonoBehaviour
     public static OnTakeDamage onTakeDamage;
 
 
+    private bool stopMiss = false;
+
 
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI debugText;
@@ -188,6 +190,7 @@ public class TrackHandler : MonoBehaviour
 
     public void handleNoteMissed(NoteScript note)
     {
+
         if (Notes.Contains(note))
         {
             Debug.Log("miss!");
@@ -198,6 +201,7 @@ public class TrackHandler : MonoBehaviour
 
             //additionally add logic for reducing the PLAYER health
         }
+
     }
 
     void removeOldNotes()
@@ -258,6 +262,12 @@ public class TrackHandler : MonoBehaviour
     {
         if (!chartIsOver)
         {
+            if (HealthScript.Health == 0)
+            {
+                chartIsOver = true;
+                Debug.Log("you died");
+                StartCoroutine(delayUntilSongEnd(2));
+            }
             if (Notes.Count <= 0 && noteSpawns.Count <= 0)
             {
                 chartIsOver = true;
