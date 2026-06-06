@@ -113,9 +113,9 @@
 162.5, Note
 163.5, Note
 
-165, GhostNote
-166.5, Note
-167.5, Note
+164.5, GhostNote
+166, Note
+167, Note
 
 
 

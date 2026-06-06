@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.TextCore.Text;
 using DG.Tweening;
-using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
-using Unity.UI;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public class SlashCombo : MonoBehaviour
