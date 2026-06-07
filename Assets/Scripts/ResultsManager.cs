@@ -18,6 +18,8 @@ public class ResultsManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI gradeText;
     [SerializeField] private TextMeshProUGUI accText;
     [SerializeField] private TextMeshProUGUI resultsText;
+    [SerializeField] private TextMeshProUGUI remainingHealth;
+    [SerializeField] private TextMeshProUGUI songText;
     [SerializeField] private GameObject particleEmitter;
     private Sequence resultsSequence;
 
@@ -26,6 +28,7 @@ public class ResultsManager : MonoBehaviour
         resultsPanel.SetActive(false);
         gradeText.gameObject.SetActive(false);
         particleEmitter.SetActive(false);
+        songText.text = ConductorScript.Instance.Song.trackName;
 
         TrackHandler.onSongEnd += ShowResults;
     }
@@ -63,23 +66,26 @@ public class ResultsManager : MonoBehaviour
 
             hitsText.text = "HITS: " + hits;
             missesText.text = "MISSES: " + misses;
-            accText.text = $"ACCURACY: {shownAcc:F2}%";
+            accText.text = $"Hit rate: {shownAcc:F2}%";
+            remainingHealth.text = $"Remaining Health: {HealthScript.Health}";
 
-            if (accuracy >= 1f && misses == 0)
-                gradeText.text = "FC";
-            else if (accuracy >= 0.95f)
-                gradeText.text = "S";
-            else if (accuracy >= 0.90f)
-                gradeText.text = "A";
-            else if (accuracy >= 0.80f)
-                gradeText.text = "B";
-            else if (accuracy >= 0.70f)
-                gradeText.text = "C";
-            else
+            if (HealthScript.Health == 0)
             {
                 gradeText.text = "F";
                 resultsText.text = "FAILURE";
-            }
+            } 
+            else if (HealthScript.Health == 10 && misses == 0)
+                gradeText.text = "FC";
+            else if (HealthScript.Health >= 9)
+                gradeText.text = "S";
+            else if (HealthScript.Health >= 8)
+                gradeText.text = "A";
+            else if (HealthScript.Health >= 6)
+                gradeText.text = "B";
+            else if (HealthScript.Health >= 2)
+                gradeText.text = "C";
+            else
+                gradeText.text = "D";
         }
     }
 
@@ -108,6 +114,10 @@ public class ResultsManager : MonoBehaviour
                     break;
 
                 case noteType.GhostNote:
+                    totalHits += 1;
+                    break;
+                
+                case noteType.StealthNote:
                     totalHits += 1;
                     break;
 

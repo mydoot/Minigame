@@ -18,6 +18,7 @@ public class TrackHandler : MonoBehaviour
     [SerializeField] private GhostNoteScript ghostNote;
     [SerializeField] private CapsuleNoteScript capsuleNote;
     [SerializeField] private TriangleNoteScript triangleNote;
+    [SerializeField] private StealthNoteScript stealthNote;
 
     [Header("Hit Point and Spawn Point Objects")]
     [SerializeField] public Transform hitPoint;
@@ -88,6 +89,7 @@ public class TrackHandler : MonoBehaviour
         noteDictionary.Add(noteType.GhostNote, ghostNote);
         noteDictionary.Add(noteType.CapsuleNote, capsuleNote);
         noteDictionary.Add(noteType.TriangleNote, triangleNote);
+        noteDictionary.Add(noteType.StealthNote, stealthNote);
     }
 
 

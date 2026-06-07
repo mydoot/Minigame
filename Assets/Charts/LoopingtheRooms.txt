@@ -1,0 +1,462 @@
+| Song: Looping the Rooms - rusino | 
+| CHARTING STYLE: targetBeat, noteType|
+| targetBeat: a float denoting the beat where note noteType will arrive at the hit point. Using regular musical notation: 1 = quarter note, 2 = half note, 0.5 = eighth note, 0.25 sixtheenth, etc | 
+| noteType: An enum that determines the type of note to be spawned. View SongObject.cs to see available note types. |
+4, Note
+5, GhostNote
+5.5, GhostNote
+6, Note
+7, Note
+8, Note
+9, GhostNote
+10, StealthNote
+11, GhostNote
+
+12, Note
+13, GhostNote
+13.5, GhostNote
+14, Note
+15, Note
+16, Note
+17, GhostNote
+
+18, StealthNote
+18.5, StealthNote
+19, StealthNote
+19.5, StealthNote
+
+20, Note
+21, GhostNote
+21.5, GhostNote
+22, Note
+23, Note
+24, Note
+25, GhostNote
+26, StealthNote
+27, GhostNote
+
+28, Note
+29, GhostNote
+29.5, GhostNote
+30, Note
+31, Note
+32, Note
+33, Note
+34, StealthNote
+
+| SECTION 2
+
+36, GhostNote
+
+37.5, Note
+38, Note
+38.5, Note
+39, Note
+39.5, Note
+40, Note
+41, Note
+
+41.5, GhostNote
+42, GhostNote
+42.5, GhostNote
+43, GhostNote
+43.5, GhostNote
+44, GhostNote
+45, GhostNote
+
+45.5, Note
+46, Note
+46.5, Note
+47, Note
+47.5, Note
+48, Note
+49, Note
+
+49.5, GhostNote
+50, GhostNote
+50.5, GhostNote
+51, GhostNote
+51.5, GhostNote
+52, GhostNote
+
+| 53, GhostNote
+
+53.5, Note
+54, Note
+54.5, Note
+55, Note
+55.5, Note
+56, Note
+
+57, Note
+
+57.5, GhostNote
+58, GhostNote
+58.5, GhostNote
+59, GhostNote
+59.5, GhostNote
+60, GhostNote
+
+61, GhostNote
+
+61.5, Note
+62, Note
+62.5, Note
+63, Note
+63.5, Note
+64, Note
+65, Note 
+66, Note
+
+| SECTION 3
+
+68, GhostNote
+70, TriangleNote
+72, TriangleNote
+74, TriangleNote
+76, TriangleNote
+78, TriangleNote
+80, TriangleNote
+82, TriangleNote
+84, GhostNote
+86, TriangleNote
+88, GhostNote
+90, TriangleNote
+92, GhostNote
+94, TriangleNote
+
+| SECTION 4
+
+100, Note
+100.5, GhostNote
+101, Note
+101.5, GhostNote
+102, Note
+102.5, GhostNote
+103, Note
+103.5, GhostNote
+104, Note
+104.5, GhostNote
+105, Note
+105.5, GhostNote
+106, Note
+
+107, GhostNote
+107.5, GhostNote
+108, GhostNote
+108.5, GhostNote
+109, GhostNote
+
+
+110, StealthNote
+110.5, StealthNote
+111, StealthNote
+111.5, StealthNote
+112, StealthNote
+
+
+113, Note
+113.5, Note
+114, Note
+114.5, Note
+115, Note
+
+
+116, GhostNote
+116.5, Note
+117, GhostNote
+117.5, Note
+118, GhostNote
+118.5, Note
+119, GhostNote
+119.5, Note
+120, GhostNote
+120.5, Note
+121, GhostNote
+121.5, Note
+122, GhostNote
+
+123, StealthNote
+123.5, StealthNote
+124, StealthNote
+124.5, StealthNote
+125, StealthNote
+
+
+126, Note
+126.5, Note
+127, Note
+127.5, Note
+128, Note
+
+
+129, GhostNote
+129.5, GhostNote
+130, GhostNote
+130.5, GhostNote
+131, GhostNote
+
+| SECTION 5
+
+132, Note
+133, StealthNote
+133.5, StealthNote
+134, Note
+135, Note
+136, Note
+137, StealthNote
+138, GhostNote
+139, StealthNote
+
+140, Note
+141, StealthNote
+141.5, StealthNote
+142, Note
+143, Note
+144, Note
+145, StealthNote
+
+146, GhostNote
+146.5, GhostNote
+147, GhostNote
+147.5, GhostNote
+
+148, Note
+149, StealthNote
+149.5, StealthNote
+150, Note
+151, Note
+152, Note
+153, StealthNote
+154, GhostNote
+155, StealthNote
+
+156, Note
+157, StealthNote
+157.5, StealthNote
+158, Note
+159, Note
+160, Note
+161, Note
+162, GhostNote
+
+| SECTION 6
+
+164, GhostNote
+166, GhostNote
+168, GhostNote
+170, GhostNote
+
+172, StealthNote
+174, StealthNote
+176, StealthNote
+178, StealthNote
+
+180, GhostNote
+180.5, CapsuleNote
+182, GhostNote
+182.5, CapsuleNote
+184, GhostNote
+184.5, CapsuleNote
+186, GhostNote
+186.5, CapsuleNote
+188, GhostNote
+188.5, CapsuleNote
+190, GhostNote
+190.5, CapsuleNote
+
+192, GhostNote
+
+| SECTION 7
+
+194, StealthNote
+194.5, StealthNote
+195, StealthNote
+195.5, StealthNote
+196, StealthNote
+
+198, GhostNote
+200, TriangleNote
+202, TriangleNote
+204, TriangleNote
+206, TriangleNote
+208, TriangleNote
+210, TriangleNote
+212, TriangleNote
+214, GhostNote
+216, TriangleNote
+218, GhostNote
+220, TriangleNote
+222, StealthNote
+
+| SECTION 8
+
+228, StealthNote
+228.5, Note
+229, StealthNote
+229.5, Note
+230, StealthNote
+230.5, Note
+231, StealthNote
+231.5, Note
+232, StealthNote
+232.5, Note
+233, StealthNote
+233.5, Note
+234, StealthNote
+
+235, Note
+235.5, GhostNote
+236, Note
+236.5, GhostNote
+237, Note
+
+238, GhostNote
+238.5, GhostNote
+239, GhostNote
+239.5, GhostNote
+240, GhostNote
+
+241, Note
+241.5, StealthNote
+242, Note
+242.5, StealthNote
+243, Note
+
+244, GhostNote
+244.5, StealthNote
+245, GhostNote
+245.5, StealthNote
+246, GhostNote
+246.5, StealthNote
+247, GhostNote
+247.5, StealthNote
+248, GhostNote
+248.5, StealthNote
+249, GhostNote
+249.5, StealthNote
+250, GhostNote
+
+251, GhostNote
+251.5, GhostNote
+252, GhostNote
+252.5, Note
+253, Note
+
+254, StealthNote
+254.5, StealthNote
+255, StealthNote
+255.5, GhostNote
+256, GhostNote
+
+257, Note
+257.5, Note
+258, Note
+258.5, StealthNote
+259, StealthNote
+
+| SECTION 9
+
+260, Note
+
+261.5, Note
+262, Note
+262.5, Note
+263, Note
+263.5, Note
+264, StealthNote
+
+265.5, Note
+266, Note
+266.5, Note
+267, Note
+267.5, Note
+268, StealthNote
+
+269.5, Note
+270, Note
+270.5, Note
+271, Note
+271.5, Note
+272, Note
+273, Note
+274, Note
+274.5, Note
+275, StealthNote
+
+277, Note
+278, Note
+278.5, Note
+279, Note
+279.5, Note
+
+280, StealthNote
+281, StealthNote
+282, StealthNote
+283, StealthNote
+284, Note
+
+| SECTION 10
+
+288, Note 
+289, Note
+289.5, Note
+290, Note
+290.5, GhostNote
+291, GhostNote
+291.5, GhostNote
+292, Note
+
+294, StealthNote
+296, StealthNote
+298, StealthNote
+300, StealthNote
+302, StealthNote
+304, StealthNote
+306, StealthNote
+308, StealthNote
+310, StealthNote
+312, StealthNote
+316, StealthNote
+314, StealthNote
+318, StealthNote
+320, StealthNote
+322, StealthNote
+
+324, Note
+325, GhostNote
+325.5, GhostNote
+326, Note
+327, Note
+328, Note
+329, GhostNote
+330, StealthNote
+331, GhostNote
+
+332, Note
+333, GhostNote
+333.5, GhostNote
+334, Note
+335, Note
+336, Note
+337, Note
+338, GhostNote
+
+340, StealthNote
+341, GhostNote
+341.5, GhostNote
+342, GhostNote
+343, GhostNote
+344, StealthNote
+345, StealthNote
+346, StealthNote
+347, StealthNote
+
+348, StealthNote
+349, GhostNote
+349.5, GhostNote
+350, Note
+351, Note
+352, Note
+353, Note
+354, TriangleNote
