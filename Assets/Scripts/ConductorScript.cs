@@ -7,6 +7,7 @@ using System.IO;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using DG.Tweening;
+using UnityEngine.InputSystem;
 
 public enum noteType
 {
@@ -59,14 +60,17 @@ public class ConductorScript : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     public AudioSource musicSource;
 
-     public delegate void OnBeat();
+    public delegate void OnBeat();
 
     public static OnBeat onTheBeat;
 
     private float nextBeat;
 
     [SerializeField] private ResultsManager resultsManager;
-    [SerializeField] private TrackHandler trackHandler;
+
+    [SerializeField] private PlayerInput playerInput;
+
+    private bool songEnded = false;
 
     void Awake()
     {
@@ -89,7 +93,7 @@ public class ConductorScript : MonoBehaviour
     void Start()
     {
         TrackHandler.onSongEnd += EndSong;
-        
+
         loadCurrentSong();
     }
 
@@ -142,7 +146,7 @@ public class ConductorScript : MonoBehaviour
         if (!Song)
         {
             Debug.LogWarning("Warning: No song loaded in conductor. Ignore this message if you are in the MainMenu scene.");
-            return; 
+            return;
         }
 
         songHasStarted = false;
@@ -165,9 +169,15 @@ public class ConductorScript : MonoBehaviour
     private void EndSong()
     {
         Debug.Log("ending song, returning to main menu (or showing results screen)");
+        TrackHandler.onSongEnd -= EndSong;
+        playerInput.SwitchCurrentActionMap("UI");
         musicSource.DOFade(0f, 5f).OnComplete(() =>
         {
-        resultsManager.ShowResults();
+            if (!songEnded)
+            {
+                resultsManager.ShowResults();
+                songEnded = true;
+            }
         });
     }
 
@@ -175,9 +185,10 @@ public class ConductorScript : MonoBehaviour
     {
         if (int.TryParse(offset, out int val))
         {
-        globalOffset = val;
-        SessionData.globalOffsetInMS = val;    
-        } else
+            globalOffset = val;
+            SessionData.globalOffsetInMS = val;
+        }
+        else
         {
             Debug.LogWarning("Offset must be an integer");
         }

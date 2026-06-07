@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using System.IO;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 // Handles spawning in the notes and moving them betwen the spawn point and the hit point, a "2nd game manager"
 
@@ -44,13 +45,19 @@ public class TrackHandler : MonoBehaviour
     public delegate void OnNoteHit();
     public delegate void OnSongEnd();
 
+    public delegate void OnTakeDamage(int dmg);
+
     public static OnNoteMissed onNoteMissed;
 
     public static OnNoteHit onNoteHit;
 
     public static OnSongEnd onSongEnd;
 
-    
+    public static OnTakeDamage onTakeDamage;
+
+
+    private bool stopMiss = false;
+
 
     [Header("Debug")]
     [SerializeField] private TextMeshProUGUI debugText;
@@ -98,10 +105,10 @@ public class TrackHandler : MonoBehaviour
         }
 
         // handle inputs
-        if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) //change this later
+        /* if (UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame || UnityEngine.InputSystem.Keyboard.current.spaceKey.wasPressedThisFrame) //change this later
         {
             hitNote();
-        }
+        } */
 
         removeOldNotes();
 
@@ -109,84 +116,92 @@ public class TrackHandler : MonoBehaviour
 
     }
 
-    void hitNote()
+    public void HitNote(InputAction.CallbackContext context)
     {
-        Debug.Log($"clicked on beat {ConductorScript.Instance.songPositionInBeats}");
-        if (Notes.Count > 0)
+        if (context.started)
         {
-            NoteScript upcomingNote = Notes[0];
 
-            float adjSongPosition = currentSongPosition + (ConductorScript.Instance.globalOffset / 1000f);
-
-            float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
-
-            Debug.Log($"note target beat: {upcomingNote.targetBeat:F2}");
-
-            float diff = Mathf.Abs(targetTime - adjSongPosition);
-
-            float msDiff = diff * 1000f; //turn diff into millisecond value
-
-            UIScript.diffDebug?.Invoke(msDiff);
-
-            if (upcomingNote.returnCurrentHealth() > 1)
+            Debug.Log($"clicked on beat {ConductorScript.Instance.songPositionInBeats}");
+            if (Notes.Count > 0)
             {
-                float largeTargetWindow = ConductorScript.Instance.secPerBeat * 1000f;
-                if (msDiff <= largeTargetWindow + 150f) //adding in a temporary 150ms of extra padding for health notes
+                NoteScript upcomingNote = Notes[0];
+
+                float adjSongPosition = currentSongPosition + (ConductorScript.Instance.globalOffset / 1000f);
+
+                float targetTime = upcomingNote.targetBeat * ConductorScript.Instance.secPerBeat;
+
+                Debug.Log($"note target beat: {upcomingNote.targetBeat:F2}");
+
+                float diff = Mathf.Abs(targetTime - adjSongPosition);
+
+                float msDiff = diff * 1000f; //turn diff into millisecond value
+
+                UIScript.diffDebug?.Invoke(msDiff);
+
+                if (upcomingNote.returnCurrentHealth() > 1)
                 {
-                    Debug.Log("hit!");
-                    hitCount++;
-                    onNoteHit?.Invoke();
-
-                    bool noteDead = upcomingNote.takeDamage();
-
-                    if (noteDead)
+                    float largeTargetWindow = ConductorScript.Instance.secPerBeat * 1000f;
+                    if (msDiff <= largeTargetWindow + 150f) //adding in a temporary 150ms of extra padding for health notes
                     {
-                        Notes.Remove(upcomingNote);
-                        ParticleManager.Instance.playDestroyParticle();
-                        upcomingNote.destroyThisNote();
-                    }
+                        Debug.Log("hit!");
+                        hitCount++;
+                        onNoteHit?.Invoke();
 
-                }
-            }
-            else
-            {
-                if (msDiff <= 70f)
-                {
-                    Debug.Log("hit!");
-                    onNoteHit?.Invoke();
-                    hitCount++;
+                        bool noteDead = upcomingNote.takeDamage();
 
-                    bool noteDead = upcomingNote.takeDamage();
+                        if (noteDead)
+                        {
+                            Notes.Remove(upcomingNote);
+                            ParticleManager.Instance.playDestroyParticle();
+                            upcomingNote.destroyThisNote();
+                        }
 
-                    if (noteDead)
-                    {
-                        Notes.Remove(upcomingNote);
-                        ParticleManager.Instance.playDestroyParticle();
-                        upcomingNote.destroyThisNote();
                     }
                 }
-            }
+                else
+                {
+                    if (msDiff <= 70f)
+                    {
+                        Debug.Log("hit!");
+                        onNoteHit?.Invoke();
+                        hitCount++;
 
-            /* else if (msDiff <= 125f)
-            {
-                Debug.Log("bad!");
-                onNoteMissed?.Invoke();
-                
-                handleNoteMissed(upcomingNote);
-            } */
+                        bool noteDead = upcomingNote.takeDamage();
+
+                        if (noteDead)
+                        {
+                            Notes.Remove(upcomingNote);
+                            ParticleManager.Instance.playDestroyParticle();
+                            upcomingNote.destroyThisNote();
+                        }
+                    }
+                }
+
+                /* else if (msDiff <= 125f)
+                {
+                    Debug.Log("bad!");
+                    onNoteMissed?.Invoke();
+
+                    handleNoteMissed(upcomingNote);
+                } */
+            }
         }
     }
 
     public void handleNoteMissed(NoteScript note)
     {
+
         if (Notes.Contains(note))
         {
             Debug.Log("miss!");
             missedCount++;
             Notes.Remove(note);
+            onNoteMissed?.Invoke();
+            onTakeDamage?.Invoke(note.healthValue);
 
             //additionally add logic for reducing the PLAYER health
         }
+
     }
 
     void removeOldNotes()
@@ -247,6 +262,12 @@ public class TrackHandler : MonoBehaviour
     {
         if (!chartIsOver)
         {
+            if (HealthScript.Health == 0)
+            {
+                chartIsOver = true;
+                Debug.Log("you died");
+                StartCoroutine(delayUntilSongEnd(2));
+            }
             if (Notes.Count <= 0 && noteSpawns.Count <= 0)
             {
                 chartIsOver = true;
