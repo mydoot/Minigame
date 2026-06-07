@@ -3,6 +3,7 @@ using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 
 
@@ -55,16 +56,16 @@ public class ResultsManager : MonoBehaviour
                 .Append(gradeText.transform.DOPunchScale(new Vector3(0.5f, 0.5f, 0), 0.5f, 0, 1f))
                 .SetAutoKill(false);
 
-            int total = hits + misses;
+            int total = calculateTotalHits();
             float accuracy = total > 0 ? (float)hits / total : 0f;
 
             float shownAcc = accuracy * 100;
 
             hitsText.text = "HITS: " + hits;
             missesText.text = "MISSES: " + misses;
-            accText.text = $"ACCURACY: {shownAcc:F0}%";
+            accText.text = $"ACCURACY: {shownAcc:F2}%";
 
-            if (accuracy == 100f && misses == 0)
+            if (accuracy >= 1f && misses == 0)
                 gradeText.text = "FC";
             else if (accuracy >= 0.95f)
                 gradeText.text = "S";
@@ -89,5 +90,39 @@ public class ResultsManager : MonoBehaviour
             if (resultsPanel.activeSelf && resultsSequence.IsComplete())
                 SceneManagerMini.Instance.LoadMainMenu();
         }
+    }
+
+    private int calculateTotalHits()
+    {
+        int totalHits = 0;
+        Queue<Chart> calc = new Queue<Chart>(ConductorScript.Instance.Song.chart);
+
+        foreach (Chart chartNote in calc)
+        {
+            noteType note = chartNote.type;
+
+            switch (note)
+            {
+                case noteType.Note:
+                    totalHits += 1;
+                    break;
+
+                case noteType.GhostNote:
+                    totalHits += 1;
+                    break;
+
+                case noteType.CapsuleNote:
+                    totalHits += 2;
+                    break;
+                case noteType.TriangleNote:
+                    totalHits += 3;
+                    break;
+
+                default:
+                    break;
+            }
+        }
+        Debug.Log($"total hits: {totalHits}");
+        return totalHits;
     }
 }
