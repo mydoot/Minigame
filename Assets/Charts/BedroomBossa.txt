@@ -116,21 +116,21 @@
 166, Note
 167, Note
 
-168, Note
-169, Note
+168, GhostNote
+169, GhostNote
 
-170.5, GhostNote
-171.5, Note
+170.5, Note
+171.5, GhostNote
 172.5, Note
 174, Note
 
 175, GhostNote
 175.5, GhostNote
-
 176, Note
-177, Note
 
+177, GhostNote
 178.5, Note
+
 
 179.5, GhostNote
 180.5, GhostNote
@@ -148,8 +148,41 @@
 190, Note
 191, GhostNote
 
+192, Note
+193, Note
 
+194.5, Note
 
+195.5, GhostNote
+196.5, Note
 
+198, Note
+199, Note
 
+200, GhostNote
+201 , GhostNote
+
+202.5, Note
+203.5, GhostNote
+204.5, Note
+206, Note
+
+207, GhostNote
+207.5, GhostNote
+208, Note
+
+209, GhostNote
+210.5, Note
+
+211.5, GhostNote
+212.5, GhostNote
+
+214, Note
+215, Note
+
+216, GhostNote
+217, GhostNote
+
+218.5, Note
+220, TriangleNote
 

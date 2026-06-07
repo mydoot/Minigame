@@ -141,7 +141,7 @@ public class TrackHandler : MonoBehaviour
                 if (upcomingNote.returnCurrentHealth() > 1)
                 {
                     float largeTargetWindow = ConductorScript.Instance.secPerBeat * 1000f;
-                    if (msDiff <= largeTargetWindow + 150f) //adding in a temporary 150ms of extra padding for health notes
+                    if (msDiff <= largeTargetWindow + 50f) //adding in a temporary 150ms of extra padding for health notes
                     {
                         Debug.Log("hit!");
                         hitCount++;
@@ -242,7 +242,7 @@ public class TrackHandler : MonoBehaviour
             {
                 if (noteDictionary.TryGetValue(chosenNote, out NoteScript obj))
                 {
-                    NoteScript Note = Instantiate(obj, spawnPoint.position, Quaternion.identity);
+                    NoteScript Note = Instantiate(obj, spawnPoint.position, obj.transform.rotation);
                     Note.targetBeat = nextTargetBeat;
                     Notes.Add(Note);
 

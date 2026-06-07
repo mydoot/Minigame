@@ -279,13 +279,14 @@
 
 208, Note
 209, Note
-209, Note
 210, GhostNote
 211, GhostNote
 212, GhostNote
 214, TriangleNote
 216, TriangleNote
 218, TriangleNote
+220, TriangleNote
+222, TriangleNote
 
 
 
